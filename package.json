@@ -11,7 +11,14 @@
   "dependencies": {
     "@astrojs/preact": "^4.0.5",
     "@astrojs/rss": "^4.0.11",
-    "astro": "^5.4.3",
-    "preact": "^10.26.4"
+    "@tailwindcss/vite": "^4.0.15",
+    "astro": "^5.5.2",
+    "lucide-preact": "^0.483.0",
+    "preact": "^10.26.4",
+    "tailwindcss": "^4.0.15"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3",
+    "prettier-plugin-astro": "^0.14.1"
   }
 }

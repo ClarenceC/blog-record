@@ -1,10 +1,14 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Greeting from '../components/Greeting';
-const pageTitle = 'Home Page';
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Greeting from "../components/Greeting";
+import BlogList from "../components/BlogList";
+const allPosts = await getCollection("blog");
+const pageTitle = "Home Page";
+console.log("allPosts:", allPosts);
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h2>My awesome blog subtitle</h2>
   <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+  <BlogList posts={allPosts} />
 </BaseLayout>

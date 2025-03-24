@@ -1,19 +1,43 @@
 ---
-import Social from './Social.astro';
+import Social from "./Social.astro";
 const platform = "github";
 const username = "withastro";
+const author = "clarence";
 ---
 
 <style>
   footer {
-    display: flex;
-    gap: 1rem;
+    height: 12.5rem;
+    background: var(--footerColor);
     margin-top: 2rem;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 1.5rem;
+    max-width: 64rem;
+    color: #fff;
   }
 </style>
 
 <footer>
-  <Social platform="twitter" username="astrodotbuild" />
-  <Social platform="github" username="withastro" />
-  <Social platform="youtube" username="astrodotbuild" />
+  <div class="content">
+    <div className="mt-2">
+      <p>
+        © {new Date().getFullYear()}
+        {author}
+      </p>
+    </div>
+    <div className="mt-2">
+      Built with <a href="https://www.gatsbyjs.com">Gatsby</a> and{" "}
+      <a href="https://reactjs.org/" className="text-[#999]"> React </a>
+    </div>
+    <div className="mt-2">{/* <FaUser /> | <FaRegEye /> */}</div>
+    {
+      /*<Social platform="twitter" username="astrodotbuild" />
+    <Social platform="github" username="withastro" />
+    <Social platform="youtube" username="astrodotbuild" />*/
+    }
+  </div>
 </footer>
