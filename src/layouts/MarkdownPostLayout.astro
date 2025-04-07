@@ -1,26 +1,61 @@
 ---
-import BaseLayout from './BaseLayout.astro';
+import BaseLayout from "./BaseLayout.astro";
+import {
+  Calendar1,
+  CircleUserRound,
+  Clock,
+  MessageCircleMore,
+} from "lucide-preact";
+
 const { frontmatter } = Astro.props;
 ---
+
 <BaseLayout pageTitle={frontmatter.title}>
-  <p><em>{frontmatter.description}</em></p>
-  <p>{frontmatter.pubDate.toLocaleDateString()}</p>
-
-  <p>Written by: {frontmatter.author}</p>
-
-  <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
-
-  <div class="tags">
-    {frontmatter.tags.map((tag: string) => (
-      <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
-    ))}
-  </div>
-
-  <slot />
+  <article class="w-2xl">
+    <div class="flex text-sm items-center mt-2 mb-5 opacity-30">
+      <time
+        class="flex items-center"
+        datetime={frontmatter.pubDate.toLocaleDateString()}
+      >
+        <Calendar1 class="mr-2" strokeWidth={1.5} />
+        {frontmatter.pubDate.toLocaleDateString()}
+      </time>
+      <address class="ml-5 flex items-center">
+        <CircleUserRound class="mr-2" strokeWidth={1.5} />
+        <span class="opacity-100">{frontmatter.author}</span>
+      </address>
+      <span class="ml-5 flex items-center">
+        <MessageCircleMore class="mr-2" strokeWidth={1.5} />
+        字数
+      </span>
+      <span class="ml-5 flex items-center">
+        <Clock class="mr-2" strokeWidth={1.5} /> 全文阅读时间
+      </span>
+    </div>
+    <section class="mx-4 leading-7 text-[#222]">
+      <p><em>{frontmatter.description}</em></p>
+      <img
+        class="my-4"
+        src={frontmatter.image.url}
+        width="100%"
+        alt={frontmatter.image.alt}
+      />
+      <slot />
+    </section>
+    <div class="tags">
+      {
+        frontmatter.tags.map((tag: string) => (
+          <p class="tag">
+            <a href={`/tags/${tag}`}>{tag}</a>
+          </p>
+        ))
+      }
+    </div>
+  </article>
 </BaseLayout>
 <style>
   a {
-    color: #00539F;
+    color: #00539f;
   }
 
   .tags {
@@ -31,9 +66,9 @@ const { frontmatter } = Astro.props;
   .tag {
     margin: 0.25em;
     border: dotted 1px #a1a1a1;
-    border-radius: .5em;
-    padding: .5em 1em;
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
     font-size: 1.15em;
-    background-color: #F8FCFD;
+    background-color: #f8fcfd;
   }
 </style>

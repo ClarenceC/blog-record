@@ -50,7 +50,6 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 
 - [ ] 旧 MD 格式文件迁入
 - [ ] MD 转 MDX
-- [ ] Blog 首页增加图片
 - [ ] 绑定域名
 - [ ] 其它个人网站链接
 - [ ] 首页优化

@@ -1,0 +1,18 @@
+---
+import BlogCard from "./BlogCard.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface BlogListProps {
+  posts: CollectionEntry<"blog">[];
+}
+
+const { posts } = Astro.props;
+---
+
+<div
+  style={{
+    width: "43rem",
+  }}
+>
+  {posts.map((post) => <BlogCard frontmatter={post} />)}
+</div>
