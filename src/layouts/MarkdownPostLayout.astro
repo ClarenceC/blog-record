@@ -10,6 +10,99 @@ import {
 const { frontmatter } = Astro.props;
 ---
 
+<style>
+  .markdown {
+    p {
+      padding: 8px 0 8px 0;
+    }
+
+    /* H1 样式 */
+    h1 {
+      font-size: 2.5em; /* 约40px，较大的字体便于吸引注意力 */
+      line-height: 1.2; /* 紧凑的行高，适合标题 */
+      font-weight: bold; /* 加粗，突出标题 */
+      color: #2c3e50; /* 深蓝色，提升专业感 */
+      margin-top: 1.5em; /* 添加顶部间距 */
+      margin-bottom: 0.5em; /* 适当的间距，避免标题与内容过于拥挤 */
+      text-align: center; /* 居中对齐，适合重要标题 */
+      text-transform: uppercase; /* 大写，增加标题的正式感 */
+    }
+
+    /* H2 样式 */
+    h2 {
+      font-size: 2em; /* 约32px，次于H1 */
+      line-height: 1.3;
+      font-weight: bold;
+      color: #34495e; /* 深灰色，与H1保持一致的色调 */
+      margin-top: 1.2em; /* 添加顶部间距 */
+      margin-bottom: 0.6em;
+      border-bottom: 2px solid #ddd; /* 添加下划线，增加层次感 */
+      padding-bottom: 0.2em;
+    }
+
+    /* H3 样式 */
+    h3 {
+      font-size: 1.75em; /* 约28px */
+      line-height: 1.4;
+      font-weight: 600; /* 稍微轻于H2 */
+      color: #446cb3; /* 蓝色，与H1呼应，但更明亮 */
+      margin-top: 1em; /* 添加顶部间距 */
+      margin-bottom: 0.7em;
+    }
+
+    /* H4 样式 */
+    h4 {
+      font-size: 1.5em; /* 约24px */
+      line-height: 1.5;
+      font-weight: 500; /* 更轻的字体粗细 */
+      color: #8e44ad; /* 紫色，与其他标题颜色形成对比 */
+      margin-top: 0.8em; /* 添加顶部间距 */
+      margin-bottom: 0.8em;
+    }
+
+    /* H5 样式 */
+    h5 {
+      font-size: 1.25em; /* 约20px */
+      line-height: 1.6;
+      font-weight: normal; /* 正常粗细，避免过于突出 */
+      color: #e74c3c; /* 红色，用于强调 */
+      margin-top: 0.6em; /* 添加顶部间距 */
+      margin-bottom: 1em;
+    }
+
+    /* UL 样式 */
+    ul {
+      list-style-type: disc; /* 使用默认的圆点符号 */
+      margin-top: 1em; /* 列表与上文的间距 */
+      margin-bottom: 1em; /* 列表与下文的间距 */
+      padding-left: 1.5em; /* 列表项的缩进，保持足够的空间 */
+    }
+
+    /* LI 样式 */
+    li {
+      font-size: 1em; /* 列表项字体大小与正文一致 */
+      line-height: 1.6; /* 适当的行高，便于阅读 */
+      margin-bottom: 0.5em; /* 列表项之间的间距 */
+      color: #333; /* 与正文一致的深灰色 */
+    }
+
+    /* h2 {
+      margin: 80px 10px 40px;
+      text-align: center;
+      color: rgb(63, 63, 63);
+      font-size: 140%;
+    }
+    h3 {
+      margin-top: 40px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      line-height: 1.5;
+      color: rgb(63, 63, 63);
+      font-size: 120%;
+    } */
+  }
+</style>
+
 <BaseLayout pageTitle={frontmatter.title}>
   <article class="w-2xl">
     <div class="flex text-sm items-center mt-2 mb-5 opacity-30">
@@ -32,7 +125,7 @@ const { frontmatter } = Astro.props;
         <Clock class="mr-2" strokeWidth={1.5} /> 全文阅读时间
       </span>
     </div>
-    <section class="mx-4 leading-7 text-[#222]">
+    <section class="mx-2 leading-[1.9] text-[#222]">
       <p><em>{frontmatter.description}</em></p>
       <img
         class="my-4"
@@ -40,7 +133,9 @@ const { frontmatter } = Astro.props;
         width="100%"
         alt={frontmatter.image.alt}
       />
-      <slot />
+      <div class="markdown">
+        <slot />
+      </div>
     </section>
     <div class="tags">
       {
