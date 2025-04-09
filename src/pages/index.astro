@@ -4,10 +4,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Greeting from "../components/Greeting";
 import BlogList from "../components/BlogList.astro";
 const allPosts = await getCollection("blog");
+const descPosts = allPosts.sort(
+  (a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate),
+);
+console.log("descPots:", descPosts);
 const pageTitle = "";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   {/* <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} /> */}
-  <BlogList posts={allPosts} />
+  <BlogList posts={descPosts} />
 </BaseLayout>

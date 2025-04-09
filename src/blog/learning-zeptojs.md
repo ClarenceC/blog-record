@@ -6,7 +6,7 @@ categories: JavaScript
 comments: true
 pubDate: 2017-11-28
 image: 
-  url: 'http://www.css88.com/doc/zeptojs_api/logo.png'
+  url: ''
   alt: 'zepto'
 author: 'Clarence.C'
 description: '在学习的过程中,学会阅读源码也是一种很好的过程,但是对于一个新手来说,阅读源码就像一面茫然,下载了源码不知道从何开始.这里楼主选择从Zepto源码开始学习.首先因为Zepto并不复杂,Zepto实现功能还是比较简单, Zepto是类似于Jquery的轻量库,不过作用于手机端,类似于Jquery对DOM操作进行拼接,Zepto对PC端的IE浏览器兼容并没有做得很好,需然大小比Jquery小但是也没有Jquery做得那么好.'
