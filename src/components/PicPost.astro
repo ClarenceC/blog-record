@@ -1,0 +1,38 @@
+---
+import { Image } from "astro:assets";
+
+const { frontmatter } = Astro.props;
+const { id, data } = frontmatter;
+const { title, pubDate, description, image } = data;
+---
+
+<a href={`/posts/${id}`}>
+  <li
+    class="relative shadow-md inset-shadow-2xs col-sm-12 col-md-12 h-56 grid-group-item rounded hover:scale-[1.005] scale-100 active:scale-100"
+  >
+    {
+      image?.url && (
+        <img src={image.url} alt={image?.alt} class="w-full h-52 rounded" />
+      )
+    }
+    <div
+      class={`absolute bottom-0 left-0 right-0 bg-white rounded-b p-4 ${
+        image?.url ? "h-2/5 py-1 px-4" : "h-full p-4"
+      }`}
+    >
+      <div>
+        <h3
+          class={`text-[28px] font-black ${
+            description ? "line-clamp-1" : "line-clamp-2"
+          }`}
+        >
+          {title}
+        </h3>
+        <p class="text-[13px] color-[#374151]">
+          {new Date(pubDate).toLocaleDateString()}
+        </p>
+      </div>
+      {!image?.url && <p class="line-clamp-3 mt-6">{description}</p>}
+    </div>
+  </li>
+</a>

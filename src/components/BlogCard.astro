@@ -13,13 +13,13 @@ console.log("id:", id, frontmatter);
     class="shadow-md inset-shadow-2xs p-4 mb-4 rounded group-hover:stroke-white relative h-40 hover:scale-[1.005] scale-100 active:scale-100"
   >
     <div class="w-4/5 h-full flex flex-col justify-between">
-      <div class="">
+      <div>
         <h3 class="text-[28px] font-black">{title}</h3>
         <p class="text-[13px] color-[#374151]">
           {new Date(pubDate).toLocaleDateString()}
         </p>
       </div>
-      <p class="overflow-ellipsis overflow-hidden whitespace-nowrap">
+      <p class="text-ellipsis overflow-hidden whitespace-nowrap">
         {description}
       </p>
     </div>
