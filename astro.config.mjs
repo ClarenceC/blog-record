@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig, passthroughImageService } from "astro/config";
+import partytown from "@astrojs/partytown";
 import preact from "@astrojs/preact";
 
 import tailwindcss from "@tailwindcss/vite";
@@ -16,7 +17,14 @@ export default defineConfig({
       // },
     },
   },
-  integrations: [preact()],
+  integrations: [
+    preact(),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
+  ],
   image: {
     service: passthroughImageService(),
   },
