@@ -7,6 +7,15 @@ import tailwindcss from "@tailwindcss/vite";
 // https://astro.build/config
 export default defineConfig({
   site: "http://www.f2ex.cc",
+  markdown: {
+    shikiConfig: {
+      theme: "dracula",
+      // themes: {
+      //   light: "github-light",
+      //   dark: "github-dark",
+      // },
+    },
+  },
   integrations: [preact()],
   image: {
     service: passthroughImageService(),
