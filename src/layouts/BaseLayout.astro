@@ -1,8 +1,12 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import GA from "../components/GA.astro";
 import "../styles/global.css";
+
+// Analytics
+import GA from "../components/analytics/GA.astro";
+import GTMBody from "../components/analytics/GTMBody.astro";
+import GTMHead from "../components/analytics/GTMHead.astro";
 const { pageTitle } = Astro.props;
 ---
 
@@ -13,9 +17,10 @@ const { pageTitle } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
-    <GA />
+    <GTMHead />
   </head>
   <body>
+    <GTMBody />
     <Header />
     <main class="bg-white">
       <section>
