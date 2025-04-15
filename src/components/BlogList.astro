@@ -9,10 +9,6 @@ interface BlogListProps {
 const { posts } = Astro.props;
 ---
 
-<div
-  style={{
-    width: "43rem",
-  }}
->
+<div class="w-full">
   {posts.map((post) => <BlogCard frontmatter={post} />)}
 </div>

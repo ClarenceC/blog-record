@@ -13,7 +13,7 @@ const pageTitle = "";
 
 <BaseLayout pageTitle={pageTitle}>
   {/* <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} /> */}
-  <div class="w-2xl">
+  <div class="md:w-2xl lg:w-2xl xl:w-2xl w-full grid grid-cols-1">
     <BlogList posts={descPosts} />
   </div>
 </BaseLayout>
