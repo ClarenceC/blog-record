@@ -4,7 +4,9 @@ import avatorImage from "../images/avatar.jpg";
 import Hamburger from "./Hamburger.astro";
 import Navigation from "./Navigation.astro";
 import ThemeIcon from "./ThemeIcon.astro";
-import { Github } from "lucide-preact";
+import { Github, Menu } from "lucide-preact";
+
+import GithubSvg from "../images/svg/github.astro";
 ---
 
 <style>
@@ -31,7 +33,6 @@ import { Github } from "lucide-preact";
 </style>
 
 <header>
-  <Hamburger />
   <div class="content">
     <div class="my-auto">
       <Image
@@ -42,12 +43,17 @@ import { Github } from "lucide-preact";
         height="36"
       />
     </div>
-    <nav>
-      <Navigation />
+    <div class="flex items-center">
+      <nav class="mr-5">
+        <Navigation />
+      </nav>
       <ThemeIcon class="ml-5" />
-      <a class="ml-3 my-auto text-white" href="https://github.com/ClarenceC">
-        <Github />
+      <a class="ml-3 my-auto" href="https://github.com/ClarenceC">
+        <GithubSvg />
       </a>
-    </nav>
+      <div class="md:hidden block">
+        <Menu class="ml-3" strokeWidth={1.5} />
+      </div>
+    </div>
   </div>
 </header>
