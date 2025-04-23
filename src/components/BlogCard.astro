@@ -16,18 +16,16 @@ console.log("id:", id, frontmatter);
       class="w-full md:w-4/5 lg:w-4/5 xl:w-4/5 h-full flex flex-col justify-between"
     >
       <div>
-        <h3
-          class="md:text-[1.75rem] lg:text-[1.75rem] xl:text-[1.75rem] text-[20px] font-black line-clamp-2"
-        >
+        <h3 class="md:text-[1.75rem] text-[20px] font-black line-clamp-2">
           {title}
         </h3>
-        <p
-          class="md:text-[13px] lg:text-[13px] xl:text-[13px] text-[10px] color-[#374151]"
-        >
+        <p class="md:text-[13px] text-[10px] color-[#374151]">
           {new Date(pubDate).toLocaleDateString()}
         </p>
       </div>
-      <p class="text-[13px] text-ellipsis overflow-hidden whitespace-nowrap">
+      <p
+        class="text-[13px] md:text-base text-ellipsis overflow-hidden whitespace-nowrap"
+      >
         {description}
       </p>
     </div>
