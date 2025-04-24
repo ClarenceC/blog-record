@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import "../styles/markdown.css";
 import {
   Calendar1,
   CircleUserRound,
@@ -55,7 +56,6 @@ const { frontmatter } = Astro.props;
       font-size: 1.5em; /* 约24px */
       line-height: 1.5;
       font-weight: 500; /* 更轻的字体粗细 */
-      color: #8e44ad; /* 紫色，与其他标题颜色形成对比 */
       margin-top: 0.8em; /* 添加顶部间距 */
       margin-bottom: 0.8em;
     }
@@ -89,6 +89,19 @@ const { frontmatter } = Astro.props;
     .astro-code,
     .astro-code span {
       font-size: 14px !important;
+    }
+
+    /* Links */
+    a {
+      font-size: 15px;
+      color: #117cee;
+      text-decoration: none;
+    }
+
+    a:hover {
+      font-size: 15px;
+      color: #1d4ed8;
+      text-decoration: underline;
     }
 
     /* h2 {
@@ -138,6 +151,7 @@ const { frontmatter } = Astro.props;
         width="100%"
         alt={frontmatter.image.alt}
       />
+      <!-- <div class="markdown"> -->
       <div class="markdown">
         <slot />
       </div>
@@ -170,5 +184,58 @@ const { frontmatter } = Astro.props;
     padding: 0.5em 1em;
     font-size: 1.15em;
     background-color: #f8fcfd;
+  }
+  // ... existing code ...
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+  }
+
+  th,
+  td {
+    padding: 0.75rem;
+    text-align: left;
+    border: 1px solid #e2e8f0;
+  }
+
+  th {
+    background-color: #f8fafc;
+    font-weight: 600;
+    color: #1e293b;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f8fafc;
+  }
+
+  tr:hover {
+    background-color: #f1f5f9;
+  }
+
+  /* Dark mode table styles */
+  html.dark table {
+    color: #e2e8f0;
+  }
+
+  html.dark th,
+  html.dark td {
+    border-color: #334155;
+  }
+
+  html.dark th {
+    background-color: #1e293b;
+    color: #e2e8f0;
+  }
+
+  html.dark tr:nth-child(even) {
+    background-color: #1e293b;
+  }
+
+  html.dark tr:hover {
+    background-color: #334155;
   }
 </style>

@@ -12,15 +12,13 @@ description: ""
 
 在一个万物互联的世界，AI 模型就像是核心不断在分析和推导，Chat，的AI孤岛，如果想让 AI 模型能连接到更多工具和接口就需要用到 MCP，MCP 是AI 模型和外部工具的通讯协议，主要是解决 AI 应用快速而灵活地扩展功能。
 
-#### MCP (Model Context Protocol， 模型上下文协议) <font style="color:rgb(25, 27, 31);">2024年11月底，由 Anthropic 推出的一种开放标准，旨在统一大型语言模型（LLM）与外部数据源和工具之间的通信协议。MCP 的主要目的在于解决当前 AI 模型因数据孤岛限制而无法充分发挥潜力的难题，MCP 使得 AI 应用能够安全地访问和操作本地及远程数据，为 AI 应用提供了连接万物的接口。</font>
+#### MCP (Model Context Protocol， 模型上下文协议)
 
-<font style="color:rgb(25, 27, 31);"></font>
+2024年11月底，由 Anthropic 推出的一种开放标准，旨在统一大型语言模型（LLM）与外部数据源和工具之间的通信协议。MCP 的主要目的在于解决当前 AI 模型因数据孤岛限制而无法充分发挥潜力的难题，MCP 使得 AI 应用能够安全地访问和操作本地及远程数据，为 AI 应用提供了连接万物的接口。
 
 #### <font style="color:rgb(25, 27, 31);">MCP 核心架构</font>
 
-<font style="color:rgb(25, 27, 31);"></font>
-
-![](https://cdn.nlark.com/yuque/0/2025/png/258062/1745393579456-7e5c20f8-1bbf-4087-b750-ae0b2d0ae8dc.png)
+![image](./_image/what-is-mcp.png)
 
 <font style="color:rgb(25, 27, 31);"></font>
 
@@ -36,7 +34,7 @@ description: ""
 
 #### <font style="color:rgb(25, 27, 31);">MCP的起源</font>
 
-<font style="color:rgb(25, 27, 31);">Anthropic </font>**<font style="color:rgb(25, 27, 31);">想</font>\*\***<font style="color:rgb(54, 54, 54);">做一个类似 LSP（Language Server Protocol）的东西？把这种“AI 应用与扩展之间的通信”标准化。</font>\*\*
+<font style="color:rgb(25, 27, 31);">Anthropic </font>**想做一个类似 LSP（Language Server Protocol）的东西？把这种"AI 应用与扩展之间的通信"标准化。**
 
 **<font style="color:rgb(54, 54, 54);">LSP </font>**<font style="color:rgba(0, 0, 0, 0.85);">是一种用于开发工具的通信协议，由微软在2016年首次提出，并在开源社区中得到了广泛的支持和推广。它主要用于简化和标准化编程语言工具（如代码编辑器、集成开发环境IDE等）与语言服务器之间的交互。</font>
 
@@ -44,13 +42,44 @@ description: ""
 
 #### <font style="color:rgba(0, 0, 0, 0.85);">MCP vs Function Calling vs A2A</font>
 
-| 对比维度 | MCP（Model Context Protocol）                                             | Function Calling                                   | A2A（Agent to Agent Protocol）                                                                                  |
-| -------- | ------------------------------------------------------------------------- | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| 性质     | 技术协议                                                                  | 功能机制，使用 API 调用                            | 开放协议                                                                                                        |
-| 范围     | 主要聚焦于解决不同大语言模型（LLM）与不同外部工具集成的标准化问题的连接。 | 主要实现大语言模型与外部工具和服务的交互功能。     | 侧重于AI智能体之间的通信和协作，支持不同系统和供应商的Agent智能体协同工作，涵盖跨企业工作流、长运行任务等场景。 |
-| 目标     | 标准化运行协议规范，避免业务代码重复编写。                                | 为大模型提供工具调用功能，扩展模型的能力和应用场景 | 实现智能体之间的安全、标准化互操作，打破智能体之间的“信息孤岛”                                                  |
-| 实现     | 基于标准协议，实现 Function Call                                          | 基于选择函数、准备参数、调用函数和整合代码         | 以“任务驱动、消息流转、能力发现”为核心实现                                                                      |
-| 常见场景 | 支持复杂场景，跨平台数据访问和操作复杂任务                                | 简单任务，机械式操作                               | 支持复杂场景，并可以Agent 智能体之间协作操作复杂任务                                                            |
+<table style="width: 100%;">
+  <tr style="font-size: 14px;">
+    <th style="width: 15%;">对比维度</th>
+    <th style="width: 30%;">MCP <br/>Model Context Protocol</th>
+    <th style="width: 25%;">Function Calling</th>
+    <th style="width: 30%;">A2A <br/>Agent to Agent Protocol</th>
+  </tr>
+  <tr>
+    <td>性质</td>
+    <td>技术协议</td>
+    <td>功能机制，使用 API 调用</td>
+    <td>开放协议</td>
+  </tr>
+  <tr>
+    <td>范围</td>
+    <td>主要聚焦于解决不同大语言模型（LLM）与不同外部工具集成的标准化问题的连接。</td>
+    <td>主要实现大语言模型与外部工具和服务的交互功能。</td>
+    <td>侧重于AI智能体之间的通信和协作，支持不同系统和供应商的Agent智能体协同工作，涵盖跨企业工作流、长运行任务等场景。</td>
+  </tr>
+  <tr>
+    <td>目标</td>
+    <td>标准化运行协议规范，避免业务代码重复编写。</td>
+    <td>为大模型提供工具调用功能，扩展模型的能力和应用场景</td>
+    <td>实现智能体之间的安全、标准化互操作，打破智能体之间的"信息孤岛"</td>
+  </tr>
+  <tr>
+    <td>实现</td>
+    <td>基于标准协议，实现 Function Call</td>
+    <td>基于选择函数、准备参数、调用函数和整合代码</td>
+    <td>以"任务驱动、消息流转、能力发现"为核心实现</td>
+  </tr>
+  <tr>
+    <td>常见场景</td>
+    <td>支持复杂场景，跨平台数据访问和操作复杂任务</td>
+    <td>简单任务，机械式操作</td>
+    <td>支持复杂场景，并可以Agent 智能体之间协作操作复杂任务</td>
+  </tr>
+</table>
 
 <font style="color:rgb(25, 27, 31);"></font>
 
