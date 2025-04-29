@@ -42,12 +42,20 @@ description: ""
 
 #### <font style="color:rgba(0, 0, 0, 0.85);">MCP vs Function Calling vs A2A</font>
 
+![](./_image/WX20250429-162052@2x.png)
+
 <table style="width: 100%;">
   <tr style="font-size: 14px;">
     <th style="width: 15%;">对比维度</th>
     <th style="width: 30%;">MCP <br/>Model Context Protocol</th>
     <th style="width: 25%;">Function Calling</th>
     <th style="width: 30%;">A2A <br/>Agent to Agent Protocol</th>
+  </tr>
+  <tr>
+    <td>焦点</td>
+    <td>智能体 ↔ 工具 / 数据</td>
+    <td>智能体扩展功能</td>
+    <td>智能体 ↔ 智能体</td>
   </tr>
   <tr>
     <td>性质</td>
@@ -57,15 +65,15 @@ description: ""
   </tr>
   <tr>
     <td>范围</td>
-    <td>主要聚焦于解决不同大语言模型（LLM）与不同外部工具集成的标准化问题的连接。</td>
+    <td>主要增强单个智能体的能力。</td>
     <td>主要实现大语言模型与外部工具和服务的交互功能。</td>
-    <td>侧重于AI智能体之间的通信和协作，支持不同系统和供应商的Agent智能体协同工作，涵盖跨企业工作流、长运行任务等场景。</td>
+    <td>核心在于多智能体系统和协作。</td>
   </tr>
   <tr>
     <td>目标</td>
-    <td>标准化运行协议规范，避免业务代码重复编写。</td>
+    <td>为 LLM 提供访问外部能力和上下文的标准方式。</td>
     <td>为大模型提供工具调用功能，扩展模型的能力和应用场景</td>
-    <td>实现智能体之间的安全、标准化互操作，打破智能体之间的"信息孤岛"</td>
+    <td>实现不同智能体间的互操作性与协调，打破智能体之间的"信息孤岛"</td>
   </tr>
   <tr>
     <td>实现</td>
@@ -89,3 +97,4 @@ description: ""
 - [对话 MCP 团队：MCP 的起源、技术细节与设计思路、与 Agent 的关系及未来迭代方向](https://liduos.com/mcp-team-discussion.html)
 - [前端开发又幸福了，Cursor + Figma MCP 快速还原设计稿](https://juejin.cn/post/7480183580120055819?searchId=2025042314451322A5C44EF2C9A3A49329)
 - [聊一下MCP，希望能让各位清醒一点吧](https://juejin.cn/post/7492271537010671635)
+- [A2A vs MCP: AI Protocol Evolution](https://a2a-mcp.org)
