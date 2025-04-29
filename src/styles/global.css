@@ -78,6 +78,45 @@ html.dark {
   color: #fff;
 }
 
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+  main {
+    max-width: 64rem;
+    margin: auto;
+    padding: 1.25rem;
+    min-height: 100vh;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.375rem;
+    margin-bottom: 0.5rem;
+  }
+  main {
+    max-width: 64rem;
+    margin: auto;
+    padding: 1.25rem;
+    min-height: 100vh;
+  }
+}
+
+@media (max-width: 320px) {
+  h1 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  main {
+    max-width: 64rem;
+    margin: auto;
+    padding: 1.25rem;
+    min-height: 100vh;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   .astro-code,
   .astro-code span {

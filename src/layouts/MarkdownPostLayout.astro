@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
-import "../styles/markdown.css";
+// import "../styles/markdown.css";
 import {
   Calendar1,
   CircleUserRound,
@@ -104,26 +104,101 @@ const { frontmatter } = Astro.props;
       text-decoration: underline;
     }
 
-    /* h2 {
-      margin: 80px 10px 40px;
-      text-align: center;
-      color: rgb(63, 63, 63);
-      font-size: 140%;
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 1.2em;
+        margin-bottom: 0.4em;
+      }
+
+      h2 {
+        font-size: 1.75em;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+      }
+
+      h3 {
+        font-size: 1.5em;
+        margin-top: 0.8em;
+        margin-bottom: 0.6em;
+      }
+
+      h4 {
+        font-size: 1.25em;
+        margin-top: 0.7em;
+        margin-bottom: 0.7em;
+      }
+
+      h5 {
+        font-size: 1.1em;
+        margin-top: 0.5em;
+        margin-bottom: 0.8em;
+      }
+
+      p,
+      li {
+        font-size: 0.95em;
+        line-height: 1.7;
+      }
+
+      ul {
+        padding-left: 1.2em;
+      }
     }
-    h3 {
-      margin-top: 40px;
-      margin-bottom: 20px;
-      font-weight: bold;
-      line-height: 1.5;
-      color: rgb(63, 63, 63);
-      font-size: 120%;
-    } */
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.75em;
+        margin-top: 1em;
+        margin-bottom: 0.3em;
+      }
+
+      h2 {
+        font-size: 1.5em;
+        margin-top: 0.8em;
+        margin-bottom: 0.4em;
+      }
+
+      h3 {
+        font-size: 1.25em;
+        margin-top: 0.7em;
+        margin-bottom: 0.5em;
+      }
+
+      h4 {
+        font-size: 1.1em;
+        margin-top: 0.6em;
+        margin-bottom: 0.6em;
+      }
+
+      h5 {
+        font-size: 1em;
+        margin-top: 0.4em;
+        margin-bottom: 0.7em;
+      }
+
+      p,
+      li {
+        font-size: 0.9em;
+        line-height: 1.8;
+      }
+
+      ul {
+        padding-left: 1em;
+      }
+
+      .astro-code,
+      .astro-code span {
+        font-size: 12px !important;
+      }
+    }
   }
 </style>
 
 <BaseLayout pageTitle={frontmatter.title}>
-  <article class="w-2xl">
-    <div class="flex text-sm items-center mt-2 mb-5 opacity-30">
+  <article class="md:w-2xl w-full">
+    <div class="flex gap-2 md:gap-5 text-sm items-center mt-2 mb-5 opacity-30">
       <time
         class="flex items-center"
         datetime={frontmatter.pubDate.toLocaleDateString()}
@@ -131,19 +206,19 @@ const { frontmatter } = Astro.props;
         <Calendar1 class="mr-2" strokeWidth={1.5} />
         {frontmatter.pubDate.toLocaleDateString()}
       </time>
-      <address class="ml-5 flex items-center">
+      <address class="flex items-center">
         <CircleUserRound class="mr-2" strokeWidth={1.5} />
         <span class="opacity-100">{frontmatter.author}</span>
       </address>
-      <span class="ml-5 flex items-center">
+      <span class="flex items-center">
         <MessageCircleMore class="mr-2" strokeWidth={1.5} />
         字数
       </span>
-      <span class="ml-5 flex items-center">
+      <span class="flex items-center">
         <Clock class="mr-2" strokeWidth={1.5} /> 全文阅读时间
       </span>
     </div>
-    <section class="mx-2 leading-[1.9] text-[#222]">
+    <section class="md:mx-2 leading-[1.9] text-[#222]">
       <p><em>{frontmatter.description}</em></p>
       <img
         class="my-4"

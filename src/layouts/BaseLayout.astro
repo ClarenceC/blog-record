@@ -23,9 +23,9 @@ const { pageTitle } = Astro.props;
   <body>
     <GTMBody />
     <Header />
-    <main class="bg-white">
+    <main class="bg-white w-full">
       <section>
-        <h1 class="text-2xl">{pageTitle}</h1>
+        <h1 class="font-medium">{pageTitle}</h1>
         <slot />
       </section>
     </main>
