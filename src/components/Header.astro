@@ -30,19 +30,45 @@ import GithubSvg from "../images/svg/github.astro";
     display: flex;
     align-item: center;
   }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 4.6875rem;
+    left: 0;
+    right: 0;
+    background: var(--headerColor);
+    padding: 1rem;
+    z-index: 1000;
+  }
+  .mobile-menu.active {
+    display: block;
+  }
+  .mobile-menu a {
+    display: block;
+    color: white;
+    padding: 0.5rem 0;
+    text-decoration: none;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+  .mobile-menu a:hover {
+    background-color: #ff9776;
+  }
 </style>
 
 <header>
   <div class="content">
-    <div class="my-auto">
-      <Image
-        class="rounded-full"
-        src={avatorImage}
-        alt="avator"
-        width="36"
-        height="36"
-      />
-    </div>
+    <a href="/">
+      <div class="my-auto">
+        <Image
+          class="rounded-full"
+          src={avatorImage}
+          alt="avator"
+          width="36"
+          height="36"
+        />
+      </div>
+    </a>
     <div class="flex items-center">
       <nav class="mr-5">
         <Navigation />
@@ -51,9 +77,36 @@ import GithubSvg from "../images/svg/github.astro";
       <a class="ml-3 my-auto" href="https://github.com/ClarenceC">
         <GithubSvg />
       </a>
-      <div class="md:hidden block">
-        <Menu class="ml-3" strokeWidth={1.5} />
+      <div class="md:hidden flex items-center">
+        <button id="mobileMenuButton" class="ml-3">
+          <Menu strokeWidth={1.5} />
+        </button>
       </div>
     </div>
   </div>
+  <div id="mobileMenu" class="mobile-menu">
+    <a href="/">首页</a>
+    <a href="/blog/">文章</a>
+    <a href="/about/">关于我</a>
+    <a href="/tags/">标签</a>
+  </div>
 </header>
+
+<script>
+  const mobileMenuButton = document.getElementById("mobileMenuButton");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  mobileMenuButton?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("active");
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener("click", (event) => {
+    if (
+      !mobileMenuButton?.contains(event.target as Node) &&
+      !mobileMenu?.contains(event.target as Node)
+    ) {
+      mobileMenu?.classList.remove("active");
+    }
+  });
+</script>
