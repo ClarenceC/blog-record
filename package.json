@@ -10,12 +10,14 @@
   },
   "dependencies": {
     "@astrojs/partytown": "^2.1.4",
-    "@astrojs/preact": "^4.0.5",
+    "@astrojs/preact": "^4.0.11",
     "@astrojs/rss": "^4.0.11",
     "@tailwindcss/vite": "^4.0.15",
-    "astro": "^5.5.2",
+    "astro": "^5.7.11",
     "lucide-preact": "^0.483.0",
+    "mdast-util-to-string": "^4.0.0",
     "preact": "^10.26.4",
+    "reading-time": "^1.5.0",
     "tailwindcss": "^4.0.15"
   },
   "devDependencies": {

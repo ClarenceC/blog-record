@@ -24,7 +24,7 @@ description: ""
 
 <font style="color:rgb(25, 27, 31);">从上图可以看出 MCP 核心架构分几个部分，MCP 遵循客户端-服务器架构（client-server），其中包含以下几个核心概念：</font>
 
-- <font style="color:rgb(25, 27, 31);">MCP 主机（MCP Hosts）：发起请求的 LLM 应用程序（例如</font><font style="color:rgb(25, 27, 31);"> </font>[<font style="color:rgb(9, 64, 142);">Claude Desktop</font>](https://zhida.zhihu.com/search?content_id=254488153&content_type=Article&match_order=1&q=Claude+Desktop&zhida_source=entity)<font style="color:rgb(25, 27, 31);">、IDE 或 AI 工具）。</font>
+- <font style="color:rgb(25, 27, 31);">MCP 主机（MCP Hosts）：发起请求的 LLM 应用程序（例如</font><font style="color:rgb(25, 27, 31);"> </font>Claude Desktop<font style="color:rgb(25, 27, 31);">、IDE 或 AI 工具）。</font>
 - <font style="color:rgb(25, 27, 31);">MCP 客户端（MCP Clients）：在主机程序内部，与 MCP server 保持 1:1 的连接。</font>
 - <font style="color:rgb(25, 27, 31);">MCP 服务器（MCP Servers）：为 MCP client 提供上下文、工具和 prompt 信息。</font>
 - <font style="color:rgb(25, 27, 31);">本地资源（Local Resources）：本地计算机中可供 MCP server 安全访问的资源（例如文件、数据库）。</font>

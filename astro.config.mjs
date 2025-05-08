@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig, passthroughImageService } from "astro/config";
+import { remarkReadingTime } from "./remark-reading-time.mjs";
 import partytown from "@astrojs/partytown";
 import preact from "@astrojs/preact";
 
@@ -16,6 +17,7 @@ export default defineConfig({
       //   dark: "github-dark",
       // },
     },
+    remarkPlugins: [remarkReadingTime],
   },
   integrations: [
     preact(),

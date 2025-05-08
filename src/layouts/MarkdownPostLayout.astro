@@ -8,7 +8,7 @@ import {
   MessageCircleMore,
 } from "lucide-preact";
 
-const { frontmatter } = Astro.props;
+const { frontmatter, words, minutesRead } = Astro.props;
 ---
 
 <style>
@@ -212,10 +212,11 @@ const { frontmatter } = Astro.props;
       </address>
       <span class="flex items-center">
         <MessageCircleMore class="mr-2" strokeWidth={1.5} />
-        字数
+        {words}
       </span>
       <span class="flex items-center">
-        <Clock class="mr-2" strokeWidth={1.5} /> 全文阅读时间
+        <Clock class="mr-2" strokeWidth={1.5} />
+        {`${minutesRead}m`}
       </span>
     </div>
     <section class="md:mx-2 leading-[1.9] text-[#222]">
