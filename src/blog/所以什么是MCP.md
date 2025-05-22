@@ -10,7 +10,7 @@ author: "Clarence.C"
 description: ""
 ---
 
-在一个万物互联的世界，AI 模型就像是核心不断在分析和推导，Chat，的AI孤岛，如果想让 AI 模型能连接到更多工具和接口就需要用到 MCP，MCP 是AI 模型和外部工具的通讯协议，主要是解决 AI 应用快速而灵活地扩展功能。
+在一个万物互联的世界，一开始 AI (类似ChatGPT)的模型就像是在和人类Chat和根据核心token不断在分析和推导的AI孤岛，如果想让 AI 模型能连接到更多工具和接口就需要用到 MCP，MCP 是AI 模型和外部工具的通讯协议，主要是解决 AI 应用快速而灵活地扩展功能。
 
 #### MCP (Model Context Protocol， 模型上下文协议)
 
