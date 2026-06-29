@@ -13,7 +13,7 @@ import GithubSvg from "../images/svg/github.astro";
   header {
     height: 4.6875rem;
     width: 100%;
-    background: var(--headerColor);
+    background: var(--color-header);
     display: flex;
     align-item: center;
   }
@@ -36,7 +36,7 @@ import GithubSvg from "../images/svg/github.astro";
     top: 4.6875rem;
     left: 0;
     right: 0;
-    background: var(--headerColor);
+    background: var(--color-header);
     padding: 1rem;
     z-index: 1000;
   }
@@ -45,14 +45,14 @@ import GithubSvg from "../images/svg/github.astro";
   }
   .mobile-menu a {
     display: block;
-    color: white;
+    color: var(--color-header-text);
     padding: 0.5rem 0;
     text-decoration: none;
     font-size: 1rem;
     text-transform: uppercase;
   }
   .mobile-menu a:hover {
-    background-color: #ff9776;
+    background-color: var(--color-accent);
   }
 </style>
 

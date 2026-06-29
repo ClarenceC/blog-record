@@ -16,7 +16,7 @@ const { title, pubDate, description, image } = data;
       )
     }
     <div
-      class={`absolute bottom-0 left-0 right-0 bg-white rounded-b p-4 ${
+      class={`absolute bottom-0 left-0 right-0 bg-[var(--color-surface)] text-[var(--color-text)] rounded-b p-4 ${
         image?.url ? "h-2/5 py-1 px-4" : "h-full p-4"
       }`}
     >
@@ -28,7 +28,7 @@ const { title, pubDate, description, image } = data;
         >
           {title}
         </h3>
-        <p class="text-[13px] color-[#374151]">
+        <p class="text-[13px] text-[var(--color-text-muted)]">
           {new Date(pubDate).toLocaleDateString()}
         </p>
       </div>

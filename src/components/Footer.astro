@@ -8,7 +8,7 @@ const author = "ClarenceC";
 <style>
   footer {
     height: 12.5rem;
-    background: var(--footerColor);
+    background: var(--color-footer);
   }
   .content {
     display: flex;
@@ -17,7 +17,7 @@ const author = "ClarenceC";
     padding: 1.5rem;
     max-width: 64rem;
     font-size: 12px;
-    color: #fff;
+    color: var(--color-footer-text);
   }
 </style>
 
@@ -29,7 +29,7 @@ const author = "ClarenceC";
       </p>
     </div>
     <div class="mt-2">
-      Powered by <a href="https://www.gatsbyjs.com" class="text-[#999]">
+      Powered by <a href="https://astro.build" class="text-[var(--color-footer-link)]">
         Astro
       </a> & Designed by {author}
     </div>
