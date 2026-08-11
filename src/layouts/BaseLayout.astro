@@ -7,7 +7,15 @@ import "../styles/global.css";
 import GA from "../components/analytics/GA.astro";
 import GTMBody from "../components/analytics/GTMBody.astro";
 import GTMHead from "../components/analytics/GTMHead.astro";
-const { pageTitle } = Astro.props;
+import { SITE } from "../consts";
+
+const { pageTitle = "", description = SITE.description, image } =
+  Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = image ? new URL(image, Astro.site).href : undefined;
+const resolvedTitle = pageTitle ? `${pageTitle} · ${SITE.name}` : SITE.title;
+const rssURL = new URL("/rss.xml", Astro.site).href;
 ---
 
 <html lang="en">
@@ -17,7 +25,34 @@ const { pageTitle } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="baidu-site-verification" content="codeva-idxwPysHVg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{pageTitle}</title>
+
+    <title>{resolvedTitle}</title>
+    <meta name="title" content={resolvedTitle} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={resolvedTitle} />
+    <meta property="og:description" content={description} />
+    {
+      ogImage && <meta property="og:image" content={ogImage} />
+    }
+
+    <meta name="twitter:card" content={ogImage ? "summary_large_image" : "summary"} />
+    <meta name="twitter:title" content={resolvedTitle} />
+    <meta name="twitter:description" content={description} />
+    {
+      ogImage && <meta name="twitter:image" content={ogImage} />
+    }
+
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={SITE.title}
+      href={rssURL}
+    />
+
     <GA />
     <GTMHead />
   </head>

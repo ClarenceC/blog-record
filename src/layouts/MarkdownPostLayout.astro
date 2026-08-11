@@ -196,7 +196,11 @@ const { frontmatter, words, minutesRead } = Astro.props;
   }
 </style>
 
-<BaseLayout pageTitle={frontmatter.title}>
+<BaseLayout
+  pageTitle={frontmatter.title}
+  description={frontmatter.description}
+  image={frontmatter.image.url}
+>
   <article class="md:w-2xl w-full">
     <div class="flex gap-2 md:gap-5 text-sm items-center mt-2 mb-5 opacity-30">
       <time

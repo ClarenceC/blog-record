@@ -3,12 +3,13 @@ import { defineConfig, passthroughImageService } from "astro/config";
 import { remarkReadingTime } from "./remark-reading-time.mjs";
 import partytown from "@astrojs/partytown";
 import preact from "@astrojs/preact";
+import sitemap from "@astrojs/sitemap";
 
 import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "http://www.f2ex.cc",
+  site: "https://www.f2ex.cc",
   markdown: {
     shikiConfig: {
       theme: "dracula",
@@ -21,6 +22,7 @@ export default defineConfig({
   },
   integrations: [
     preact(),
+    sitemap(),
     partytown({
       config: {
         forward: ["dataLayer.push"],
