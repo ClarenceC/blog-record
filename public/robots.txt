@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.fe2x.cc/sitemap-index.xml
+Sitemap: https://fe2x.cc/sitemap-index.xml

@@ -9,7 +9,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://www.fe2x.cc",
+  site: "https://fe2x.cc",
   markdown: {
     shikiConfig: {
       theme: "dracula",
