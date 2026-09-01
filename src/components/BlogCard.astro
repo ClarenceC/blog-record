@@ -6,31 +6,37 @@ const { frontmatter } = Astro.props;
 const { id, data } = frontmatter;
 const { title, pubDate, description, image } = data;
 console.log("id:", id, frontmatter);
+// class="shadow-md inset-shadow-2xs p-4 mb-4 rounded group-hover:stroke-white relative h-40 hover:scale-[1.005] scale-100 active:scale-100 bg-[var(--color-surface-elevated)] border border-[var(--color-border)] text-[var(--color-text)]"
 ---
 
-<a href={`/posts/${id}`}>
-  <article
-    class="shadow-md inset-shadow-2xs p-4 mb-4 rounded group-hover:stroke-white relative h-40 hover:scale-[1.005] scale-100 active:scale-100 bg-[var(--color-surface-elevated)] border border-[var(--color-border)] text-[var(--color-text)]"
-  >
-    <div
-      class="w-full md:w-4/5 lg:w-4/5 xl:w-4/5 h-full flex flex-col justify-between"
-    >
+<article class="group">
+  <a href={`/posts/${id}`} class="block">
+    <div class="md:w-4/5 lg:w-4/5 xl:w-4/5">
       <div>
-        <h3 class="md:text-[1.75rem] text-[20px] font-black line-clamp-2">
-          {title}
-        </h3>
-        <p class="md:text-[13px] text-[10px] text-[var(--color-text-muted)]">
+        <p class="font-mono text-xs font-bold tracking-wider uppercase dark:text-gray-500 text-[var(--color-text-muted)]">
           {new Date(pubDate).toLocaleDateString()}
         </p>
+        <h3
+          class="mt-2 mb-2 text-2xl leading-tight font-bold text-gray-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400 line-clamp-2"
+        >
+          {title}
+        </h3>
       </div>
       <p
-        class="text-[13px] md:text-base text-ellipsis overflow-hidden whitespace-nowrap"
+        class="line-clamp-2 overflow-hidden text-[13px] md:text-base leading-relaxed text-gray-600 dark:text-gray-400"
       >
         {description}
       </p>
     </div>
-    <div class="absolute top-0 bottom-0 right-0 rounded bg-cover bg-center">
-      <!-- {
+  </a>
+  <div
+    class="my-12 block border-b border-gray-100 group-last:border-0 dark:border-gray-800"
+  >
+  </div>
+</article>
+
+<!-- <div class="absolute top-0 bottom-0 right-0 rounded bg-cover bg-center">
+      {
         image?.url && (
           <Image
             class="rounded"
@@ -41,8 +47,8 @@ console.log("id:", id, frontmatter);
             height={100}
           />
         )
-      } -->
-      <!-- {
+      }
+      {
         image?.url && (
           <img
             class="rounded bg-cover h-full"
@@ -50,7 +56,5 @@ console.log("id:", id, frontmatter);
             alt={image?.alt}
           />
         )
-      } -->
-    </div>
-  </article>
-</a>
+      }
+    </div> -->

@@ -63,7 +63,7 @@ const rssURL = new URL("/rss.xml", Astro.site).href;
     <Header />
     <main class="w-full">
       <section>
-        <h1 class="font-medium">{pageTitle}</h1>
+        {pageTitle && <h1 class="font-medium">{pageTitle}</h1>}
         <slot />
       </section>
     </main>
