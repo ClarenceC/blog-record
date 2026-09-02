@@ -58,17 +58,18 @@ import GithubSvg from "../images/svg/github.astro";
 
 <header>
   <div class="content">
-    <a href="/">
-      <div class="my-auto">
+    <div class="my-auto">
+      <a href="/">
         <Image
           class="rounded-full"
           src={avatorImage}
           alt="avator"
           width="36"
           height="36"
+          loading="eager"
         />
-      </div>
-    </a>
+      </a>
+    </div>
     <div class="flex items-center">
       <nav class="mr-5">
         <Navigation />
