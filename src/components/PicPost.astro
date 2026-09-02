@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { formatDate } from "../utils/date";
 
 const { frontmatter } = Astro.props;
 const { id, data } = frontmatter;
@@ -29,7 +30,7 @@ const { title, pubDate, description, image } = data;
           {title}
         </h3>
         <p class="text-[13px] text-[var(--color-text-muted)]">
-          {new Date(pubDate).toLocaleDateString()}
+          {formatDate(new Date(pubDate))}
         </p>
       </div>
       {!image?.url && <p class="line-clamp-3 mt-6">{description}</p>}
