@@ -1,18 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
     <defs>
         <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-            <stop class="stop-a" offset="0" stop-color="#ff9776" />
-            <stop class="stop-b" offset="1" stop-color="#e05c8f" />
+            <stop offset="0" stop-color="#ff9776" />
+            <stop offset="1" stop-color="#e05c8f" />
         </linearGradient>
     </defs>
     <rect width="128" height="128" rx="28" fill="url(#bg)" />
-    <!-- the wave, now white on warm gradient -->
     <path fill="none" stroke="#ffffff" stroke-width="14" stroke-linecap="round"
         d="M22 72 C34 48 44 46 54 58 C62 68 70 72 80 64 C90 56 96 52 106 58" />
-    <style>
-        @media (prefers-color-scheme: dark) {
-            .stop-a { stop-color: #e07a56; }
-            .stop-b { stop-color: #b03a68; }
-        }
-    </style>
 </svg>
