@@ -12,187 +12,207 @@ import { formatDate } from "../utils/date";
 const { frontmatter, words, minutesRead } = Astro.props;
 ---
 
-<style>
+<style is:global>
   .markdown {
-    p {
-      padding: 8px 0 8px 0;
+    --md-text: #3f3f3f;
+    --md-strong: #ff3502;
+    --md-link: #576b95;
+    --md-quote: #5b5b5b;
+    --md-quote-mark: #9e9e9e;
+    --md-font: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light,
+      "PingFang SC", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+
+    color: var(--md-text);
+    font-family: var(--md-font);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    text-align: left;
+  }
+
+  html.dark .markdown {
+    --md-text: var(--color-text);
+    --md-strong: #ff7a59;
+    --md-link: #9eb4d8;
+    --md-quote: var(--color-text-muted);
+    --md-quote-mark: var(--color-border);
+  }
+
+  .markdown h1,
+  .markdown h2,
+  .markdown h3,
+  .markdown h4,
+  .markdown h5,
+  .markdown h6 {
+    color: var(--md-text);
+    font-family: inherit;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  /* The article has no h1; this keeps the same centered, regular-weight voice. */
+  .markdown h1 {
+    margin: 48px 10px 24px;
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .markdown h2 {
+    margin: 80px 10px 40px;
+    font-size: 22.4px;
+    text-align: center;
+  }
+
+  .markdown h3 {
+    margin: 40px 10px 20px;
+    font-size: 19.2px;
+    font-weight: 700;
+    text-align: left;
+  }
+
+  .markdown h4 {
+    margin: 32px 10px 16px;
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .markdown h5,
+  .markdown h6 {
+    margin: 24px 10px 12px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .markdown p {
+    margin: 10px;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--md-text);
+  }
+
+  .markdown a {
+    color: var(--md-link);
+    font-size: inherit;
+    text-decoration: none;
+  }
+
+  .markdown a:hover {
+    text-decoration: underline;
+  }
+
+  .markdown strong {
+    font-weight: 700;
+    color: var(--md-strong);
+  }
+
+  .markdown em {
+    font-style: italic;
+  }
+
+  .markdown ul,
+  .markdown ol {
+    margin: 10px 10px 10px 2em;
+    padding: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--md-text);
+  }
+
+  .markdown ul {
+    list-style-type: disc;
+  }
+
+  .markdown ol {
+    list-style-type: decimal;
+  }
+
+  .markdown li {
+    margin: 0.35em 0;
+    color: var(--md-text);
+  }
+
+  .markdown li > p {
+    margin: 0.35em 0;
+  }
+
+  .markdown blockquote {
+    margin: 20px 10px;
+    padding: 1px 0 1px 10px;
+    color: var(--md-quote);
+    font-size: 16px;
+    line-height: 1.5;
+    background: rgba(158, 158, 158, 0.1);
+    border-left: 3px solid var(--md-quote-mark);
+  }
+
+  .markdown blockquote p {
+    margin: 10px 0;
+    color: inherit;
+  }
+
+  .markdown img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+    border-radius: 4px;
+  }
+
+  .markdown hr {
+    margin: 32px 10px;
+    border: 0;
+    border-top: 1px solid rgba(158, 158, 158, 0.45);
+  }
+
+  /* Inline code in the article is 15px at 60% opacity, with no chip background. */
+  .markdown :not(pre) > code {
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    color: inherit;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 15px;
+    opacity: 0.6;
+  }
+
+  .markdown pre,
+  .markdown .astro-code {
+    margin: 20px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-x: auto;
+  }
+
+  .markdown .astro-code span {
+    font-size: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .markdown h1 {
+      margin: 36px 0 20px;
     }
 
-    /* H1 样式 */
-    h1 {
-      font-size: 2.5em; /* 约40px，较大的字体便于吸引注意力 */
-      line-height: 1.2; /* 紧凑的行高，适合标题 */
-      font-weight: bold; /* 加粗，突出标题 */
-      color: var(--color-heading);
-      margin-top: 1.5em; /* 添加顶部间距 */
-      margin-bottom: 0.5em; /* 适当的间距，避免标题与内容过于拥挤 */
-      text-align: center; /* 居中对齐，适合重要标题 */
-      text-transform: uppercase; /* 大写，增加标题的正式感 */
+    .markdown h2 {
+      margin: 48px 0 24px;
     }
 
-    /* H2 样式 */
-    h2 {
-      font-size: 2em; /* 约32px，次于H1 */
-      line-height: 1.3;
-      font-weight: bold;
-      color: var(--color-heading);
-      margin-top: 1.2em; /* 添加顶部间距 */
-      margin-bottom: 0.6em;
-      border-bottom: 2px solid var(--color-border); /* 添加下划线，增加层次感 */
-      padding-bottom: 0.2em;
+    .markdown h3 {
+      margin: 32px 0 16px;
     }
 
-    /* H3 样式 */
-    h3 {
-      font-size: 1.75em; /* 约28px */
-      line-height: 1.4;
-      font-weight: 600; /* 稍微轻于H2 */
-      color: var(--color-heading-accent);
-      margin-top: 1em; /* 添加顶部间距 */
-      margin-bottom: 0.7em;
-    }
-
-    /* H4 样式 */
-    h4 {
-      font-size: 1.5em; /* 约24px */
-      line-height: 1.5;
-      font-weight: 500; /* 更轻的字体粗细 */
-      margin-top: 0.8em; /* 添加顶部间距 */
-      margin-bottom: 0.8em;
-    }
-
-    /* H5 样式 */
-    h5 {
-      font-size: 1.25em; /* 约20px */
-      line-height: 1.6;
-      font-weight: normal; /* 正常粗细，避免过于突出 */
-      color: var(--color-heading-warm);
-      margin-top: 0.6em; /* 添加顶部间距 */
-      margin-bottom: 1em;
-    }
-
-    /* UL 样式 */
-    ul {
-      list-style-type: disc; /* 使用默认的圆点符号 */
-      margin-top: 1em; /* 列表与上文的间距 */
-      margin-bottom: 1em; /* 列表与下文的间距 */
-      padding-left: 1.5em; /* 列表项的缩进，保持足够的空间 */
-    }
-
-    /* LI 样式 */
-    li {
-      font-size: 1em; /* 列表项字体大小与正文一致 */
-      line-height: 1.6; /* 适当的行高，便于阅读 */
-      margin-bottom: 0.5em; /* 列表项之间的间距 */
-      color: var(--color-text);
-    }
-
-    .astro-code,
-    .astro-code span {
-      font-size: 14px !important;
-    }
-
-    /* Links */
-    a {
-      font-size: 15px;
-      color: var(--color-link);
-      text-decoration: none;
-    }
-
-    a:hover {
-      font-size: 15px;
-      color: var(--color-link-hover);
-      text-decoration: underline;
-    }
-
-    /* 响应式设计 */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2em;
-        margin-top: 1.2em;
-        margin-bottom: 0.4em;
-      }
-
-      h2 {
-        font-size: 1.75em;
-        margin-top: 1em;
-        margin-bottom: 0.5em;
-      }
-
-      h3 {
-        font-size: 1.5em;
-        margin-top: 0.8em;
-        margin-bottom: 0.6em;
-      }
-
-      h4 {
-        font-size: 1.25em;
-        margin-top: 0.7em;
-        margin-bottom: 0.7em;
-      }
-
-      h5 {
-        font-size: 1.1em;
-        margin-top: 0.5em;
-        margin-bottom: 0.8em;
-      }
-
-      p,
-      li {
-        font-size: 0.95em;
-        line-height: 1.7;
-      }
-
-      ul {
-        padding-left: 1.2em;
-      }
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 1.75em;
-        margin-top: 1em;
-        margin-bottom: 0.3em;
-      }
-
-      h2 {
-        font-size: 1.5em;
-        margin-top: 0.8em;
-        margin-bottom: 0.4em;
-      }
-
-      h3 {
-        font-size: 1.25em;
-        margin-top: 0.7em;
-        margin-bottom: 0.5em;
-      }
-
-      h4 {
-        font-size: 1.1em;
-        margin-top: 0.6em;
-        margin-bottom: 0.6em;
-      }
-
-      h5 {
-        font-size: 1em;
-        margin-top: 0.4em;
-        margin-bottom: 0.7em;
-      }
-
-      p,
-      li {
-        font-size: 0.9em;
-        line-height: 1.8;
-      }
-
-      ul {
-        padding-left: 1em;
-      }
-
-      .astro-code,
-      .astro-code span {
-        font-size: 12px !important;
-      }
+    .markdown h4,
+    .markdown h5,
+    .markdown h6,
+    .markdown p,
+    .markdown blockquote,
+    .markdown pre,
+    .markdown .astro-code,
+    .markdown hr {
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 </style>

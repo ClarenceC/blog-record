@@ -10,7 +10,6 @@ author: "Clarence.C"
 description: 最近 chencc 大佬在 X 上面推荐了 5 个 非常实用的 skills，我试了一圈觉得都好有意思。方向是优化学习效率和对 Agent 使用做复盘的，正好分享给大家
 ---
 
-最近 chencc 大佬在 X 上面推荐了 5 个 非常实用的 skills，我试了一圈觉得都好有意思。方向是优化学习效率和对 Agent 使用做复盘的，正好分享给大家。
 
 #### 1. /eli5
 
