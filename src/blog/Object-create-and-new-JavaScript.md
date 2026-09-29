@@ -10,10 +10,6 @@ author: "Clarence.C"
 description: "之前学习JavaScript 权威指南,说以后在JavaScript建立对象请使用Object.create() 尽量少使用 new Function() .这两个新建对象的方法到底有什么不同呢?"
 ---
 
-# 前言
-
-之前学习JavaScript 权威指南,说以后在JavaScript建立对象请使用Object.create() 尽量少使用 new Function() .这两个新建对象的方法到底有什么不同呢?
-
 <!-- more -->
 
 # Object.create vs. new Function()

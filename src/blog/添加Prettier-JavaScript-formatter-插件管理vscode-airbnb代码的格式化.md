@@ -10,10 +10,6 @@ description: '在项目里面一般会添加 **ESLint** 来对代码进行规范
 author: 'Clarence.C'
 ---
 
-在项目里面一般会添加 **ESLint** 来对代码进行规范和验证,当项目里面添加 **ESLint**（怎样添加） 代码规范后，项目运行时就会检查并提示各种格式问题。
-在VSCode中,可以直接在插件里面添加到你的VSCode中.
-
-
 <!-- more -->
 ## ESLint Linter
 

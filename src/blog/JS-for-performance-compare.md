@@ -12,10 +12,6 @@ description: 'JavaScript 发展至今已经发展出多种数组的循环遍历�
 
 ![image](./JS-for-performance-compare/1_AoOWn4UdPyuixXtkLQsQXA.png)
 
-## 前言
-
-JavaScript 发展至今已经发展出多种数组的循环遍历的方法,不同的遍历方法运行起来那个比较快,不同循环方法使用在那些场景,下面将进行比较:
-
 <!-- more -->
 
 ## 各种数组遍历的方法

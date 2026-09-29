@@ -12,8 +12,6 @@ description: "Node的类型老是不记得，整理一下以便记忆,注意下�
 
 # Node 类型
 
-Node的类型老是不记得，整理一下以便记忆,注意下面序号也是代表对应的数值
-
 1. Node.ELEMENT_NODE
 2. Node.ATTRIBUTE_NODE
 3. Node.TEXT_NODE

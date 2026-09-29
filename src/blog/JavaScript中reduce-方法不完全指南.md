@@ -14,10 +14,6 @@ description: "在使用JavaScript中经常会遇到 reduce()方法,reduce() 方�
 
 ## Array.prototype.reduce()
 
-## 前言
-
-在使用JavaScript中经常会遇到 reduce()方法,reduce() 方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终为一个值，是ES5中新增的又一个数组逐项处理方法，那reduce方法跟foreach、map等数组方法又有啥区别呢。
-
 ## 语法：
 
 > arr.reduce(callback[, initialValue]) — More From [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce)

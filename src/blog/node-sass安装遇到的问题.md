@@ -10,8 +10,6 @@ author: "Clarence.C"
 description: "项目需要使用node-Sass,一 npm install 就报错了, ` npm install node-sass --save-dev` 这么简单都报错,于是细心看了一下,原来是跟node-gyp 有关,发现一层又一层的底层安装,我的是window 端,总结一下错误情况如下:"
 ---
 
-项目需要使用node-Sass,一 npm install 就报错了, ` npm install node-sass --save-dev` 这么简单都报错,于是细心看了一下,原来是跟node-gyp 有关,发现一层又一层的底层安装,我的是window 端,总结一下错误情况如下:
-
 <!-- more -->
 
 ## node-gyp

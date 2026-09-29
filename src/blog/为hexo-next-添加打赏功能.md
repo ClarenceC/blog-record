@@ -12,8 +12,6 @@ description: '其实如果你是next 主题的话,添加next自带打赏功能�
 
 ##  hexo 怎样添加 打赏功能按扭呢?
 
- 其实如果你是next 主题的话,添加next自带打赏功能并不难的,官网也是有介绍,需要在**主题配置文件**中填入微信和支付宝收款二维码图片地址 即可开启该功能.
-
 > themes _config.yml
  ```javascript
 reward_comment: 坚持原创技术分享，您的支持将鼓励我继续创作！

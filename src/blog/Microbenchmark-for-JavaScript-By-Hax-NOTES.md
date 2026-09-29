@@ -12,10 +12,6 @@ author: "Clarence.C"
 description: "虽然未能去到阿里巴巴 D2 前端盛会，但是在过后的回放当中也总结到了不少的东西，这篇文章是总结贺大 [Johnhax](http://johnhax.net/) 的关于 **Microbenchmark For JavaScript** 的性能测试演讲。"
 ---
 
-# 背景
-
-虽然未能去到阿里巴巴 D2 前端盛会，但是在过后的回放当中也总结到了不少的东西，这篇文章是总结贺大 [Johnhax](http://johnhax.net/) 的关于 **Microbenchmark For JavaScript** 的性能测试演讲。
-
 <!-- more -->
 
 # 知识点

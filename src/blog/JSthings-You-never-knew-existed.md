@@ -18,8 +18,6 @@ description: "我已经看过了全部的 MDN 文档及其它 JS API 文档发�
 > 译者： [ClarenceC](fe2x.cc)
 > 本文为意译
 
-我已经看过了全部的 MDN 文档及其它 JS API 文档发现很少有说明使用这些JS功能的文档，所以列出这样的一个列表把有用你所不知道JS功能列出来。
-
 <!-- More -->
 
 # Label Statements (Label 语句)

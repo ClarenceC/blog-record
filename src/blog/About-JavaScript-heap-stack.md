@@ -14,8 +14,6 @@ description: "最近看到一个面试题 是这样的"
 
 [原文链接：http://www.jianshu.com/p/996671d4dcc4](http://www.jianshu.com/p/996671d4dcc4)
 
-最近看到一个面试题 是这样的
-
 ```
 // demo01.js
 var a = 20;
