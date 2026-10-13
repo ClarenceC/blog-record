@@ -260,30 +260,46 @@ const { frontmatter, words, minutesRead } = Astro.props;
     <div class="tags">
       {
         frontmatter.tags.map((tag: string) => (
-          <p class="tag">
-            <a href={`/tags/${tag}`}>{tag}</a>
-          </p>
+          <a class="tag" href={`/tags/${tag}`}>
+            {tag}
+          </a>
         ))
       }
     </div>
   </article>
 </BaseLayout>
 <style>
-  a {
-    color: var(--color-link);
-  }
-
   .tags {
     display: flex;
     flex-wrap: wrap;
+    gap: 6px;
+    margin: 28px 10px 4px;
   }
 
   .tag {
-    margin: 0.25em;
-    border: dotted 1px var(--color-border);
-    border-radius: 0.5em;
-    padding: 0.5em 1em;
-    font-size: 1.15em;
-    background-color: var(--color-surface-elevated);
+    border: 1px solid color-mix(in srgb, var(--color-text-muted) 28%, transparent);
+    border-radius: 999px;
+    padding: 1px 8px;
+    color: var(--color-text-muted);
+    font-size: 12px;
+    line-height: 1.7;
+    text-decoration: none;
+  }
+
+  .tag:hover {
+    color: var(--color-link);
+    border-color: color-mix(in srgb, var(--color-link) 40%, transparent);
+  }
+
+  .tag:focus-visible {
+    outline: 2px solid var(--color-link);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 640px) {
+    .tags {
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 </style>
