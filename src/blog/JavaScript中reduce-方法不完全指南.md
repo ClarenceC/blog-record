@@ -2,7 +2,7 @@
 title: JavaScript中reduce()方法不完全指南
 pubDate: 2017-07-05
 categories: JavaScript
-tags: ["JavaScript", "reduce", "map", "foreach"]
+tags: ["JavaScript"]
 image:
   url: ""
   alt: ""

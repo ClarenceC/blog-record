@@ -1,7 +1,7 @@
 ---
-title: JavaScript 无报错误访问深层属性方法
+title: JavaScript 安全访问深层属性
 pubDate: 2019-02-04
-tags: ['JavaScript', '访问 JavaScript 深层属性']
+tags: ['JavaScript']
 image: 
   url: ''
   alt: ''

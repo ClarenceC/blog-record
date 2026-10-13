@@ -1,8 +1,8 @@
 ---
-title: 添加Prettier-JavaScript formatter 插件管理vscode airbnb代码的格式化
+title: 用 Prettier 格式化 VS Code 里的代码
 pubDate: 2017-07-17
 categories: ops
-tags: ['airbnb', 'vscode', 'Prettier-JavaScript formatter', 'eslint']
+tags: ['工具']
 image: 
   url: ''
   alt: ''

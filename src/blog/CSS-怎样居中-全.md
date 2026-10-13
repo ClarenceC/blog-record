@@ -2,7 +2,7 @@
 title: CSS 怎样居中(全)
 pubDate: 2017-08-13
 categories: css
-tags: ['css', '居中', 'div', '垂直居中']
+tags: ['CSS', '居中']
 image: 
   url: ''
   alt: ''

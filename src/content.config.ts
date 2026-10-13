@@ -14,7 +14,21 @@ const blog = defineCollection({
       url: z.string(),
       alt: z.string(),
     }),
-    tags: z.array(z.string()),
+    // Controlled tag vocabulary — add a new tag here ONLY when 3+ posts will share it
+    tags: z.array(
+      z.enum([
+        'JavaScript',
+        'TypeScript',
+        'CSS',
+        'Git',
+        'Node',
+        '工具',
+        'Claude Code',
+        'AI',
+        '随笔',
+        '居中',
+      ])
+    ),
   }),
 });
 // 导出一个单独的 `collections` 对象用以注册你的集合（们）

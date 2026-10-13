@@ -5,9 +5,9 @@ categories: "感想"
 image:
   url: "https://images.unsplash.com/photo-1460891053196-b9d4d9483d9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1375&q=80"
   alt: "winter is coming"
-tags: ["感想", "总结"]
+tags: ["随笔"]
 author: "Clarence.C"
-description: ""
+description: "2018 年的两件转变：开始两个人的生活，以及进入一家互联网公司。记下 Git、Vue、Weex 和效率上的体会，以及下一年要补的事。"
 ---
 
 ## 2018关键转折点

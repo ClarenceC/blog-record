@@ -1,6 +1,6 @@
 ---
 title: "JavaScript 的存储方式"
-tags: ["JavaScript", "Heap", "Stack", "怎样保存变量"]
+tags: ["JavaScript"]
 categories: "JavaScript"
 pubDate: 2017-09-11
 image:

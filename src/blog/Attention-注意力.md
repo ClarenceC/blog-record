@@ -6,7 +6,7 @@ author: "Clarence.C"
 image:
   url: ""
   alt: ""
-tags: ["注意力", "专注", "心流", "生产力"]
+tags: ["随笔"]
 ---
 
 

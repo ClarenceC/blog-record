@@ -2,12 +2,12 @@
 title: 所以什么是MCP
 pubDate: 2025-04-23
 categories: AI
-tags: ["MCP", "AI"]
+tags: ["AI"]
 image:
   url: ""
   alt: ""
 author: "Clarence.C"
-description: ""
+description: "MCP（Model Context Protocol）是 Anthropic 提出的开放协议，让大模型应用按统一方式连接外部工具和数据。文中说明 Host、Client、Server，并对照 LSP、Function Calling 和 A2A。"
 ---
 
 在一个万物互联的世界，一开始 AI (类似ChatGPT)的模型就像是在和人类Chat和根据核心token不断在分析和推导的AI孤岛，如果想让 AI 模型能连接到更多工具和接口就需要用到 MCP，MCP 是AI 模型和外部工具的通讯协议，主要是解决 AI 应用快速而灵活地扩展功能。

@@ -2,7 +2,7 @@
 title: 为hexo next 添加打赏功能
 pubDate: 2017-08-03
 categories: ops
-tags: ['hexo', 'next', 'reward_comment']
+tags: ['工具']
 image: 
   url: ''
   alt: ''

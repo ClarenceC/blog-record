@@ -2,7 +2,7 @@
 title: JavaScript Object.create vs new Function() 的区别
 pubDate: 2017-10-14
 categories: JavaScript
-tags: ["Object.create", "new", "Javasciprt"]
+tags: ["JavaScript"]
 image:
   url: ""
   alt: ""

@@ -27,7 +27,7 @@ const sortedPosts = [...posts].sort(
 );
 ---
 
-<BaseLayout pageTitle={tag}>
+<BaseLayout pageTitle={tag} noindex>
   <p class="tag-count">{sortedPosts.length} 篇</p>
   <ul class="tag-posts">
     {
@@ -55,7 +55,7 @@ const sortedPosts = [...posts].sort(
   }
 
   .tag-posts {
-    max-width: 42rem;
+    max-width: 64rem;
     margin: 0;
     padding: 0;
     list-style: none;

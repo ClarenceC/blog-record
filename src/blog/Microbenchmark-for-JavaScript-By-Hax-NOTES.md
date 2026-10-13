@@ -1,7 +1,7 @@
 ---
-title: D2 贺老 JavaScript Microbenchmark 测试的总结
+title: JavaScript 微基准测试笔记
 pubDate: 2018-02-04
-tags: ["JavaScript", "Microbenchmark"]
+tags: ["JavaScript"]
 categories: JavaScript
 comments: true
 image:

@@ -1,14 +1,6 @@
 ---
 title: 关于JavaScript的解释执行 与 编译执行的对比
-tags:
-  [
-    "JavaScript编译",
-    "JavaScript解释",
-    "JIT",
-    "即时编译器",
-    "前端编译",
-    "编译和解释区别",
-  ]
+tags: ["JavaScript"]
 categories: "JavaScript"
 pubDate: 2017-09-09
 image:

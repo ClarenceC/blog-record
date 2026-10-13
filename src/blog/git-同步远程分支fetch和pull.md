@@ -2,7 +2,7 @@
 title: Git 同步远程分支fetch和pull
 pubDate: 2017-08-11
 categories: ops
-tags: ["Git", "fetch", "pull"]
+tags: ["Git"]
 image:
   url: ""
   alt: ""

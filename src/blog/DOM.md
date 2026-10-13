@@ -1,7 +1,7 @@
 ---
 title: 什么是 DOM
 pubDate: 2018-06-25
-tags: ['JavaScript DOM', 'DOM']
+tags: ['JavaScript']
 image: 
   url: ''
   alt: ''

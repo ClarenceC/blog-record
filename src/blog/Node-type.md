@@ -1,8 +1,8 @@
 ---
-title: Node的知识点
+title: DOM Node 类型
 pubDate: 2017-11-22
 categories: Javascript
-tags: ["dom-type", "javascript"]
+tags: ["JavaScript"]
 image:
   url: ""
   alt: ""

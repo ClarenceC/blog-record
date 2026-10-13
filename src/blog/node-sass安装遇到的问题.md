@@ -2,7 +2,7 @@
 title: node-sass安装遇到的问题
 pubDate: 2017-07-08
 categories: ops
-tags: ["node-Sass", "node-gyp"]
+tags: ["工具"]
 image:
   url: ""
   alt: ""

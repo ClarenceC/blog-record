@@ -2,7 +2,7 @@
 title: 5 个有意思的 Claude Code skills
 pubDate: 2026-08-31
 categories: AI
-tags: ["AI", "Claude Code", "Skills"]
+tags: ["AI", "Claude Code"]
 image:
   url: ""
   alt: ""

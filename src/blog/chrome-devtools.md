@@ -1,6 +1,6 @@
 ---
 title: Chrome Devtools 开发者工具简述
-tags: ["tool"]
+tags: ["工具"]
 categories: JavaScript
 photos: 2018/02/13/chrome-devtools/chrome-devtools-1024x512.png
 pubDate: 2018-02-13

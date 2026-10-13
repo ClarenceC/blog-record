@@ -1,6 +1,6 @@
 ---
 title: 良好的CSS命名规则会让你省上上小时的调试时间
-tags: ['css', 'BEM']
+tags: ['CSS']
 categoriess: CSS
 comments: true
 pubDate: 2018-01-28

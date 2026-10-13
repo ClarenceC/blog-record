@@ -2,7 +2,7 @@
 title: JavaScript构建类的方法总结
 pubDate: 2017-08-17
 categories: JavaScript
-tags: ['JavaScript构建类', 'JavaScript Class', 'JavaScript 继承']
+tags: ['JavaScript']
 image: 
   url: ''
   alt: ''

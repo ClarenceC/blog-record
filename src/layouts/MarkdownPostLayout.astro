@@ -10,6 +10,8 @@ import {
 import { formatDate } from "../utils/date";
 
 const { frontmatter, words, minutesRead } = Astro.props;
+const description = frontmatter.description?.trim() ?? "";
+const imageUrl = frontmatter.image?.url?.trim() ?? "";
 ---
 
 <style is:global>
@@ -219,10 +221,10 @@ const { frontmatter, words, minutesRead } = Astro.props;
 
 <BaseLayout
   pageTitle={frontmatter.title}
-  description={frontmatter.description}
-  image={frontmatter.image.url}
+  description={description}
+  image={imageUrl}
 >
-  <article class="md:w-2xl w-full">
+  <article class="w-full">
     <div class="flex gap-2 md:gap-5 text-sm items-center mt-2 mb-5 opacity-30">
       <time
         class="flex items-center"
@@ -245,13 +247,17 @@ const { frontmatter, words, minutesRead } = Astro.props;
       </span>
     </div>
     <section class="md:mx-2 leading-[1.9]">
-      <p><em>{frontmatter.description}</em></p>
-      <img
-        class="my-4"
-        src={frontmatter.image.url}
-        width="100%"
-        alt={frontmatter.image.alt}
-      />
+      {description && <p><em>{description}</em></p>}
+      {
+        imageUrl && (
+          <img
+            class="my-4"
+            src={imageUrl}
+            width="100%"
+            alt={frontmatter.image.alt}
+          />
+        )
+      }
       <!-- <div class="markdown"> -->
       <div class="markdown">
         <slot />

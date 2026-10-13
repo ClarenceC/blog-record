@@ -7,7 +7,7 @@ image:
   url: ''
   alt: ''
 author: 'Clarence.C'
-description: ''
+description: "项目里的 Git 约定：从 develop 拉功能分支，不直接推 develop 或 master，推送前先 rebase，合并后删除分支，提交前通过构建和测试。"
 ---
 
 {% asset_img  atlassian-getting-git-right.jpg %}

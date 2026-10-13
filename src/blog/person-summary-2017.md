@@ -2,7 +2,7 @@
 title: 2017总结 拥抱变化,夯实基础
 pubDate: 2017-12-29
 categories: 感想
-tags: ["感想", "总结"]
+tags: ["随笔"]
 image:
   url: "https://images.unsplash.com/photo-1491245338813-c6832976196e?auto=format&fit=crop&w=2100&q=80"
   alt: "2017-summary"

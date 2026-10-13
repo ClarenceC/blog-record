@@ -1,19 +1,17 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import PicPost from "../components/PicPost.astro";
-const allPosts = await getCollection("blog");
-const descPosts = allPosts.sort(
+import BlogList from "../components/BlogList.astro";
+
+const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
 );
-console.log("descPots:", descPosts);
 ---
 
-<BaseLayout>
-  <ul class="grid grid-cols-2 gap-4">
-    {descPosts.map((post: any) => <PicPost frontmatter={post} />)}
-  </ul>
-  <script>
-    import "../scripts/menu.js";
-  </script>
+<BaseLayout
+  pageTitle="博客"
+  showHeading={false}
+  description="fe2x 的全部文章，按发布时间从新到旧排列。"
+>
+  <BlogList posts={posts} />
 </BaseLayout>

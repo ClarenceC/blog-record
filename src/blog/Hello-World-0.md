@@ -6,7 +6,7 @@ image:
   url: ""
   alt: ""
 author: "Clarence.C"
-description: ""
+description: "这个博客的第一篇，记下站点开始的时候。"
 tags: []
 ---
 

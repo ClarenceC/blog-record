@@ -1,13 +1,13 @@
 ---
-title: "关于 zsh:command not found: ***"
+title: "zsh 出现 command not found 怎么办"
 pubDate: 2018-07-13
 categories: ops
-tags: ["zsh"]
+tags: ["工具"]
 image:
   url: ""
   alt: ""
 author: "Clarence.C"
-description: ""
+description: "在 oh-my-zsh 里新增命令后出现 command not found。以安装 Arcanist 为例，说明路径要写进 .zshrc，只在 bash 里 export PATH 不会生效。"
 ---
 
 # 关于 "zsh: command not found: \*\*\*"

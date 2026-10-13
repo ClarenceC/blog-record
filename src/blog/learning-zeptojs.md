@@ -1,7 +1,7 @@
 ---
 layout: _drafts
 title: Zepto.JS 源码的学习
-tags: ['JavaScript', 'Zepto']
+tags: ['JavaScript']
 categories: JavaScript
 comments: true
 pubDate: 2017-11-28
