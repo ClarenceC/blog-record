@@ -24,6 +24,7 @@ const blog = defineCollection({
         'Node',
         '工具',
         'Claude Code',
+        'Skills',
         'AI',
         '随笔',
         '居中',
