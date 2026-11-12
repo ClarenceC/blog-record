@@ -1,86 +1,90 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-const pageTitle = "About Me";
+import { siGithub, siJuejin, siX } from "simple-icons";
 
-const identity = {
-  firstName: "Sarah",
-  country: "Canada",
-  occupation: "Technical Writer",
-  hobbies: ["photography", "birdwatching", "baseball"],
-};
-
-const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
-
-const happy = true;
-const finished = true;
-const goal = 3;
-
-const skillColor = "navy";
-const fontWeight = "400";
-const textCase = "capitalize";
+const links = [
+  {
+    href: "https://github.com/ClarenceC",
+    label: "GitHub",
+    path: siGithub.path,
+  },
+  {
+    href: "https://juejin.cn/user/3245414054900903",
+    label: "稀土掘金",
+    path: siJuejin.path,
+  },
+  {
+    href: "https://x.com/lockshiver",
+    label: "X",
+    path: siX.path,
+  },
+];
 ---
 
-<BaseLayout>
-  <div>
-    <head>
-      <style define:vars={{ skillColor, fontWeight, textCase }}>
-        h1 {
-          color: purple;
-          font-size: 4rem;
-        }
-        .skill {
-          color: var(--skillColor);
-          font-weight: var(--fontWeight);
-          text-transform: var(--textCase);
-        }
-      </style>
-    </head>
-    <body>
-      <h1>{pageTitle}</h1>
-      <h2>... and my new Astro site!</h2>
-
-      <p>
-        I am working through Astro's introductory tutorial. This is the second
-        page on my website, and it's the first one I built myself!
-      </p>
-
-      <p>
-        This site will update as I complete more of the tutorial, so keep
-        checking back and see how my journey is going!
-      </p>
-      <p>Here are a few facts about me:</p>
-      <ul>
-        <li>My name is {identity.firstName}.</li>
-        <li>
-          I live in {identity.country} and I work as a {identity.occupation}.
-        </li>
-        {
-          identity.hobbies.length >= 2 && (
-            <li>
-              Two of my hobbies are: {identity.hobbies[0]} and{" "}
-              {identity.hobbies[1]}
-            </li>
-          )
-        }
-      </ul>
-      <p>My skills are:</p>
-      <ul>
-        {skills.map((skill) => <li class="skill">{skill}</li>)}
-      </ul>
-      {happy && <p>I am happy to be learning Astro!</p>}
-
-      {finished && <p>I finished this tutorial!</p>}
-
+<BaseLayout
+  pageTitle="About Me"
+  description="Clarence，写技术，也做业务前端。"
+>
+  <div class="about">
+    <p>
+      ClarenceC 十年研发工程师，熟悉 React、Vue、TypeScript、Java、Node.js 等技术
+    </p>
+    <p>最近在研究 Agent，对 Web3 感兴趣</p>
+    <p>
+      之前在广州的互联网公司工作过，失业状态，可接远程工作。
+    </p>
+    <div class="about-links">
       {
-        goal === 3 ? (
-          <p>My goal is to finish in 3 days.</p>
-        ) : (
-          <p>My goal is not 3 days.</p>
-        )
+        links.map((link) => (
+          <a href={link.href} aria-label={link.label} title={link.label}>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              role="img"
+              aria-hidden="true"
+            >
+              <path d={link.path} />
+            </svg>
+          </a>
+        ))
       }
-      <script>
-        import "../scripts/menu.js";
-      </script>
-    </body>
+    </div>
   </div>
 </BaseLayout>
+
+<style>
+  .about{
+    max-width: 620px;
+    /* margin: 0 auto; */
+  }
+  .about p + p {
+    margin-top: 1rem;
+  }
+
+  .about a {
+    color: var(--color-link);
+  }
+
+  .about a:hover {
+    color: var(--color-link-hover);
+  }
+
+  .about-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 3rem;
+  }
+
+  .about-links a {
+    display: flex;
+    line-height: 0;
+  }
+
+  .about-links svg {
+    display: block;
+    fill: currentColor;
+  }
+</style>

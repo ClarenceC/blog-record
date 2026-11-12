@@ -4,7 +4,7 @@ import avatorImage from "../images/avatar.jpg";
 import Hamburger from "./Hamburger.astro";
 import Navigation from "./Navigation.astro";
 import ThemeIcon from "./ThemeIcon.astro";
-import { Github, Menu } from "lucide-preact";
+import { Menu } from "lucide-preact";
 
 import GithubSvg from "../images/svg/github.astro";
 ---
@@ -54,6 +54,11 @@ import GithubSvg from "../images/svg/github.astro";
   .mobile-menu a:hover {
     background-color: var(--color-accent);
   }
+  .github-link {
+    display: flex;
+    align-items: center;
+    color: var(--color-header-text);
+  }
 </style>
 
 <header>
@@ -76,7 +81,7 @@ import GithubSvg from "../images/svg/github.astro";
       </nav>
       <ThemeIcon class="ml-5" />
       <a
-        class="ml-3 my-auto"
+        class="github-link ml-3 my-auto"
         href="https://github.com/ClarenceC"
         aria-label="GitHub"
       >
