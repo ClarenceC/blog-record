@@ -3,13 +3,16 @@ import BaseLayout from "./BaseLayout.astro";
 // import "../styles/markdown.css";
 import {
   Calendar1,
-  CircleUserRound,
+  ChevronLeft,
+  ChevronRight,
   Clock,
-  MessageCircleMore,
+  WholeWord,
 } from "lucide-preact";
 import { formatDate } from "../utils/date";
 
-const { frontmatter, words, minutesRead } = Astro.props;
+const { frontmatter, words, minutesRead, prev = null, next = null } =
+  Astro.props;
+const readMinutes = Math.max(1, Math.round(Number(minutesRead) || 1));
 const description = frontmatter.description?.trim() ?? "";
 const imageUrl = frontmatter.image?.url?.trim() ?? "";
 ---
@@ -225,25 +228,18 @@ const imageUrl = frontmatter.image?.url?.trim() ?? "";
   image={imageUrl}
 >
   <article class="w-full">
-    <div class="flex gap-2 md:gap-5 text-sm items-center mt-2 mb-5 opacity-30">
-      <time
-        class="flex items-center"
-        datetime={frontmatter.pubDate.toISOString().slice(0, 10)}
-      >
-        <Calendar1 class="mr-2" strokeWidth={1.5} />
+    <div class="post-meta">
+      <time datetime={frontmatter.pubDate.toISOString().slice(0, 10)}>
+        <Calendar1 size={14} strokeWidth={1.75} />
         {formatDate(frontmatter.pubDate)}
       </time>
-      <address class="flex items-center">
-        <CircleUserRound class="mr-2" strokeWidth={1.5} />
-        <span class="opacity-100">{frontmatter.author}</span>
-      </address>
-      <span class="flex items-center">
-        <MessageCircleMore class="mr-2" strokeWidth={1.5} />
-        {words}
+      <span>
+        <WholeWord size={14} strokeWidth={1.75} />
+        {words} 字
       </span>
-      <span class="flex items-center">
-        <Clock class="mr-2" strokeWidth={1.5} />
-        {`${minutesRead}m`}
+      <span>
+        <Clock size={14} strokeWidth={1.75} />
+        约 {readMinutes} 分钟
       </span>
     </div>
     <section class="md:mx-2 leading-[1.9]">
@@ -272,9 +268,63 @@ const imageUrl = frontmatter.image?.url?.trim() ?? "";
         ))
       }
     </div>
+    {
+      (prev || next) && (
+        <nav class="post-nav" aria-label="相邻文章">
+          <div>
+            {prev && (
+              <a class="post-nav-link" href={`/posts/${prev.id}`} rel="prev">
+                <span class="post-nav-kicker">
+                  <ChevronLeft size={16} strokeWidth={1.5} />
+                  上一篇
+                </span>
+                <span class="post-nav-title">{prev.title}</span>
+              </a>
+            )}
+          </div>
+          <div>
+            {next && (
+              <a
+                class="post-nav-link post-nav-next"
+                href={`/posts/${next.id}`}
+                rel="next"
+              >
+                <span class="post-nav-kicker">
+                  下一篇
+                  <ChevronRight size={16} strokeWidth={1.5} />
+                </span>
+                <span class="post-nav-title">{next.title}</span>
+              </a>
+            )}
+          </div>
+        </nav>
+      )
+    }
   </article>
 </BaseLayout>
 <style>
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 18px;
+    margin: 2px 0 22px;
+    color: var(--color-text-muted);
+    font-size: 13px;
+    line-height: 1;
+  }
+
+  .post-meta time,
+  .post-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .post-meta svg {
+    flex: none;
+  }
+
   .tags {
     display: flex;
     flex-wrap: wrap;
@@ -302,8 +352,62 @@ const imageUrl = frontmatter.image?.url?.trim() ?? "";
     outline-offset: 2px;
   }
 
+  .post-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 28px 10px 8px;
+  }
+
+  .post-nav-link {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+    height: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .post-nav-link:hover {
+    border-color: var(--color-link);
+    color: var(--color-link);
+  }
+
+  .post-nav-link:focus-visible {
+    outline: 2px solid var(--color-link);
+    outline-offset: 2px;
+  }
+
+  .post-nav-next {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .post-nav-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    color: var(--color-text-muted);
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .post-nav-title {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
   @media (max-width: 640px) {
-    .tags {
+    .tags,
+    .post-nav {
       margin-left: 0;
       margin-right: 0;
     }

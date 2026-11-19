@@ -3,14 +3,25 @@ import { getCollection, render } from "astro:content";
 import MarkdownPostLayout from "../../layouts/MarkdownPostLayout.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: { post },
-  }));
+  // Same order as the blog index: newest first. "下一篇" walks toward older posts.
+  const posts = (await getCollection("blog")).sort(
+    (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+  );
+  return posts.map((post, index) => {
+    const newer = posts[index - 1];
+    const older = posts[index + 1];
+    return {
+      params: { slug: post.id },
+      props: {
+        post,
+        prev: newer ? { id: newer.id, title: newer.data.title } : null,
+        next: older ? { id: older.id, title: older.data.title } : null,
+      },
+    };
+  });
 }
 
-const { post } = Astro.props;
+const { post, prev, next } = Astro.props;
 const { Content, remarkPluginFrontmatter } = await render(post);
 console.log("remarkPluginFrontmatter", remarkPluginFrontmatter);
 ---
@@ -19,6 +30,8 @@ console.log("remarkPluginFrontmatter", remarkPluginFrontmatter);
   frontmatter={post.data}
   words={remarkPluginFrontmatter.words}
   minutesRead={remarkPluginFrontmatter.minutesRead}
+  prev={prev}
+  next={next}
 >
   <Content />
 </MarkdownPostLayout>
