@@ -171,6 +171,45 @@ const imageUrl = frontmatter.image?.url?.trim() ?? "";
     border-top: 1px solid rgba(158, 158, 158, 0.45);
   }
 
+  .markdown table {
+    width: calc(100% - 20px);
+    margin: 16px 10px 24px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid rgba(158, 158, 158, 0.45);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .markdown th,
+  .markdown td {
+    padding: 12px 14px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid rgba(158, 158, 158, 0.35);
+  }
+
+  .markdown tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .markdown th {
+    font-weight: 700;
+    color: var(--md-text);
+    background: rgba(158, 158, 158, 0.12);
+  }
+
+  .markdown td:first-child {
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .markdown td:nth-child(2) {
+    white-space: nowrap;
+  }
+
   /* Inline code in the article is 15px at 60% opacity, with no chip background. */
   .markdown :not(pre) > code {
     padding: 0;
@@ -215,9 +254,19 @@ const imageUrl = frontmatter.image?.url?.trim() ?? "";
     .markdown blockquote,
     .markdown pre,
     .markdown .astro-code,
-    .markdown hr {
+    .markdown hr,
+    .markdown table {
       margin-left: 0;
       margin-right: 0;
+    }
+
+    .markdown table {
+      width: 100%;
+    }
+
+    .markdown td:first-child,
+    .markdown td:nth-child(2) {
+      white-space: normal;
     }
   }
 </style>

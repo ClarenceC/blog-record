@@ -25,3 +25,11 @@ pnpm-debug.log*
 
 # local design drafts (not part of the site)
 design/
+
+# local agent role files (not part of the site)
+AGENTS.md
+MEDIA.md
+
+# local agent skills (not part of the site)
+.claude/
+
