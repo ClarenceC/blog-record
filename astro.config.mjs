@@ -29,6 +29,11 @@ export default defineConfig({
       },
     }),
   ],
+  build: {
+    // Post CSS is ~6KB gzip but split into two render-blocking files.
+    // Inlining removes that second round trip from LCP.
+    inlineStylesheets: "always",
+  },
   image: {
     service: passthroughImageService(),
   },
