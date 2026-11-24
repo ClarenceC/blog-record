@@ -10,11 +10,22 @@ import {
 } from "lucide-preact";
 import { formatDate } from "../utils/date";
 
-const { frontmatter, words, minutesRead, prev = null, next = null } =
+const { frontmatter, headings = [], words, minutesRead, prev = null, next = null } =
   Astro.props;
 const readMinutes = Math.max(1, Math.round(Number(minutesRead) || 1));
 const description = frontmatter.description?.trim() ?? "";
 const imageUrl = frontmatter.image?.url?.trim() ?? "";
+const pageTitle = frontmatter.title.replace(/\s+/g, " ").trim();
+const toc = headings
+  .filter((heading) => heading.depth >= 1 && heading.depth <= 4)
+  .map((heading) => ({
+    depth: heading.depth,
+    slug: heading.slug,
+    text: heading.text.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim(),
+  }))
+  .filter((heading) => heading.text && heading.slug && heading.text !== pageTitle);
+const showToc = toc.length >= 2;
+const tocMinDepth = showToc ? Math.min(...toc.map((heading) => heading.depth)) : 2;
 ---
 
 <style is:global>
@@ -53,6 +64,7 @@ const imageUrl = frontmatter.image?.url?.trim() ?? "";
     font-family: inherit;
     font-weight: 400;
     line-height: 1.5;
+    scroll-margin-top: 12px;
   }
 
   /* The article has no h1; this keeps the same centered, regular-weight voice. */
@@ -224,6 +236,7 @@ const imageUrl = frontmatter.image?.url?.trim() ?? "";
   .markdown pre,
   .markdown .astro-code {
     margin: 20px 10px;
+    border: 1px solid var(--color-border);
     border-radius: 4px;
     font-size: 14px;
     line-height: 1.6;
@@ -275,6 +288,7 @@ const imageUrl = frontmatter.image?.url?.trim() ?? "";
   pageTitle={frontmatter.title}
   description={description}
   image={imageUrl}
+  narrow
 >
   <article class="w-full">
     <div class="post-meta">
@@ -303,7 +317,26 @@ const imageUrl = frontmatter.image?.url?.trim() ?? "";
           />
         )
       }
-      <!-- <div class="markdown"> -->
+      {
+        showToc && (
+          <nav class="toc" aria-label="目录">
+            <div class="toc-inner">
+              <p class="toc-label" aria-hidden="true">目录</p>
+              <ol class="toc-list">
+                {
+                  toc.map((heading) => (
+                    <li
+                      style={`--toc-indent: ${(heading.depth - tocMinDepth) * 0.85}rem`}
+                    >
+                      <a href={`#${heading.slug}`}>{heading.text}</a>
+                    </li>
+                  ))
+                }
+              </ol>
+            </div>
+          </nav>
+        )
+      }
       <div class="markdown">
         <slot />
       </div>
@@ -351,6 +384,70 @@ const imageUrl = frontmatter.image?.url?.trim() ?? "";
     }
   </article>
 </BaseLayout>
+<script>
+  // Scroll spy for the TOC: marks the section being read with aria-current.
+  const list = document.querySelector<HTMLElement>(".toc-list");
+  const links = [
+    ...document.querySelectorAll<HTMLAnchorElement>(".toc-list a"),
+  ];
+  const headings = links.map((link) =>
+    document.getElementById(decodeURIComponent(link.hash.slice(1))),
+  );
+
+  const setActive = (index: number) => {
+    links.forEach((link, i) => {
+      if (i === index) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    });
+    const link = links[index];
+    if (!list || !link) return;
+    // Long TOCs scroll inside their own box; keep the active entry visible.
+    const box = list.getBoundingClientRect();
+    const item = link.getBoundingClientRect();
+    if (item.top < box.top) list.scrollTop -= box.top - item.top;
+    else if (item.bottom > box.bottom)
+      list.scrollTop += item.bottom - box.bottom;
+  };
+
+  const update = () => {
+    const maxScroll = document.documentElement.scrollHeight - innerHeight;
+    // The reading line slides from the top of the viewport to the bottom as the
+    // page scrolls, so headings near the end of a short post still get a turn.
+    const line = Math.max(
+      96,
+      innerHeight * (maxScroll > 0 ? scrollY / maxScroll : 1),
+    );
+    let current = -1;
+    headings.forEach((heading, i) => {
+      if (heading && heading.getBoundingClientRect().top <= line) current = i;
+    });
+    setActive(current);
+  };
+
+  if (links.length) {
+    // A clicked entry stays active through its own jump, even when the page is
+    // too short to bring that heading up to the reading line. The jump is one
+    // scroll event (no smooth scrolling here), so that event is skipped.
+    let jumping = false;
+    const pin = (index: number) => {
+      setActive(index);
+      jumping = true;
+    };
+    // Scroll events already fire at most once per frame, so no extra throttle.
+    const onScroll = () => {
+      if (jumping) jumping = false;
+      else update();
+    };
+
+    links.forEach((link, i) => link.addEventListener("click", () => pin(i)));
+    addEventListener("scroll", onScroll, { passive: true });
+    addEventListener("resize", update);
+
+    const fromHash = links.findIndex((link) => link.hash === location.hash);
+    if (location.hash && fromHash >= 0) pin(fromHash);
+    else update();
+  }
+</script>
 <style>
   .post-meta {
     display: flex;
@@ -372,6 +469,93 @@ const imageUrl = frontmatter.image?.url?.trim() ?? "";
 
   .post-meta svg {
     flex: none;
+  }
+
+  .toc {
+    margin: 14px 0 26px;
+  }
+
+  .toc-inner {
+    width: max-content;
+    max-width: min(28rem, 100%);
+  }
+
+  /* The label is the only dark text here, so it reads as the list's heading. */
+  .toc-label {
+    margin: 0 0 8px;
+    color: var(--color-text);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  /* The rail is drawn on the scroll box, so it stays put while entries scroll. */
+  .toc-list {
+    max-height: 14rem;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    list-style: none;
+    scrollbar-width: thin;
+    box-shadow: inset 1px 0
+      color-mix(in srgb, var(--color-text-muted) 30%, transparent);
+  }
+
+  /* Indent lives on the link so every entry keeps its edge on the rail. */
+  .toc-list a {
+    display: block;
+    padding: 4px 8px 4px calc(12px + var(--toc-indent, 0rem));
+    color: var(--color-text-muted);
+    font-size: 13px;
+    line-height: 1.45;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+
+  .toc-list a:hover {
+    color: var(--color-link);
+  }
+
+  .toc-list a:focus-visible {
+    outline: 2px solid var(--color-link);
+    outline-offset: -2px;
+  }
+
+  /* Wide screens: the TOC moves into the gray gutter, starts level with the
+     post meta row, then follows the scroll. The column keeps its full width.
+     Breakpoint = column (780px + 3rem = 51.75rem) + 2 x (10rem TOC + 1.25rem
+     gap + 0.75rem edge margin). Update it when --post-width changes. */
+  @media (min-width: 75.75rem) {
+    article {
+      position: relative;
+    }
+
+    .toc {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: calc(100% + 2.75rem);
+      /* Gutter minus main's padding (1.5rem), the gap, and the edge margin. */
+      width: clamp(10rem, calc(50vw - var(--post-width) / 2 - 3.5rem), 13rem);
+      margin: 0;
+    }
+
+    .toc-inner {
+      position: sticky;
+      top: 1.5rem;
+      width: auto;
+      max-width: none;
+    }
+
+    .toc-list {
+      max-height: calc(100vh - 5rem);
+    }
+
+    /* Set by the scroll spy below. Inline, the TOC scrolls away, so no marker. */
+    .toc-list a[aria-current] {
+      color: var(--color-text);
+      box-shadow: inset 2px 0 var(--color-link);
+    }
   }
 
   .tags {
@@ -455,6 +639,7 @@ const imageUrl = frontmatter.image?.url?.trim() ?? "";
   }
 
   @media (max-width: 640px) {
+    .toc,
     .tags,
     .post-nav {
       margin-left: 0;

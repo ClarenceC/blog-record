@@ -15,6 +15,7 @@ const {
   image,
   noindex = false,
   showHeading = true,
+  narrow = false,
 } = Astro.props;
 
 const resolvedDescription = description.trim() || SITE.description;
@@ -70,7 +71,7 @@ const rssURL = new URL("/rss.xml", Astro.site).href;
   <body>
     <GTMBody />
     <Header />
-    <main class="w-full">
+    <main class:list={["w-full", { "main-narrow": narrow }]}>
       <section>
         {showHeading && pageTitle && <h1 class="font-medium">{pageTitle}</h1>}
         <slot />

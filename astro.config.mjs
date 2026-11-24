@@ -12,11 +12,13 @@ export default defineConfig({
   site: "https://fe2x.cc",
   markdown: {
     shikiConfig: {
-      theme: "dracula",
-      // themes: {
-      //   light: "github-light",
-      //   dark: "github-dark",
-      // },
+      // Inline colors are off so global.css can follow html.dark,
+      // including when the toggle disagrees with the system theme.
+      themes: {
+        light: "github-light",
+        dark: "dracula",
+      },
+      defaultColor: false,
     },
     remarkPlugins: [remarkReadingTime],
   },
